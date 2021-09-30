@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+div#tv-radio {
+    width: 900px;
+    height: 580px;
+    margin: auto;
+    background: url("../_imagens/radio-tv.png") no-repeat;
+}
+
+audio#musica{
+    display: block;
+    position: relative;
+    left: 575px;
+    top: 490px;
+}
+/* essa opção vc utiliza qquando tem um video salvo no servidorsite*/
+video#filme{
+    display: block;
+    position: relative;
+    left: 90px;
+    top: 70px;
+    width: 10px; /*tem que deixar a 440px para poder aparecer*/
+}
+/* essa opção já é para adicionar video do youtube por exemplo*/
+iframe#videoyoutube {
+    display: block;
+    position: relative;
+    left: 90px;
+    top: 70px;
+    width: 440px;
+}
