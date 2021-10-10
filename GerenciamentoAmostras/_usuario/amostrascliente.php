@@ -30,7 +30,7 @@
         <header id="cabecalho">
             <hgroup>
                 <h1>Gerenciamento de Amostras</h1>
-                <h2>Usu�rio</h2>
+                <h2>Usuário</h2>
             </hgroup>
 
             <nav id="menu">
@@ -57,13 +57,13 @@
                     <nav id="menu-opcoes">
                         <h1>Opcoes</h1>
                         <ul type="1">
-                            <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#novo" target="janela" alt="especifica��es da tela"/>Cadastrar Amostra</a></li>
-                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#alterar" target="janela" alt="especifica��es da tela"/>Alterar Amostra</a></li>
-                            <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros1" target="janela" alt="especifica��es da tela"/>Atribuir exame</a></li>
-                            <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros2" target="janela" alt="especifica��es da tela"/>outros 2</a></li>
-                            <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros3" target="janela" alt="especifica��es da tela"/>outros 3</a></li>
+                            <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#novo" target="janela" alt="especificações da tela"/>Cadastrar Amostra</a></li>
+                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#alterar" target="janela" alt="especificações da tela"/>Alterar Amostra</a></li>
+                            <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros1" target="janela" alt="especificações da tela"/>Atribuir exame</a></li>
+                            <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros2" target="janela" alt="especificações da tela"/>outros 2</a></li>
+                            <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostras.php#outros3" target="janela" alt="especificações da tela"/>outros 3</a></li>
                         </ul>
-                        <iframe src="_alteracoesamostras.php" name="janela" scrolling="no" id="frame-spec">
+                        <iframe src="_alteracoesamostrascliente.php" name="janela" scrolling="no" id="frame-spec">
                         </iframe>
                     </nav>
                 </header>
