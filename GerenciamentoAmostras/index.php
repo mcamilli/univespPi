@@ -1,6 +1,6 @@
 <?php
     include('_codigos/classes.php');
-    include('_codigos/mysql.php')
+    include('_codigos/mysql.php');
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +44,7 @@
                                 $_SESSION['PermissaoAdmin'] = array(true);
 
                                 echo "<script>window.location = 'inicio.php'</script>";
+                                echo "<script>window.location = '_codigos/logout.php'</script>";
 
 			            }else{
                             try

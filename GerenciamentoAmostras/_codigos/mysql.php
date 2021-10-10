@@ -34,7 +34,7 @@
 
 		public static function VerificaLogin($login, $senha){
 
-			$conexao = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die ('Não foi possosível conectar');
+			$conexao = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die ('Nï¿½o foi possosï¿½vel conectar');
 
 			$usuario = mysqli_real_escape_string($conexao,$login);
 			$senha2 = mysqli_real_escape_string($conexao,$senha);
@@ -55,24 +55,5 @@
 		return TRUE;
 		}
 
-		
-		/*public static function AddAdmin($RazaoSocial,$NomeFantasia,$cnpj,$endereco,$numero,$cidade,$estado,$cep,$telefone1,$telefone2,$email,$login,$senha,$prefixo){ //adicionar mais administradores/prestadores de serviços
-			
-			$conexao = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die ('Não foi possosível conectar');
-
-			
-			$sql = "INSERT INTO administrador (null,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-			VALUES ($RazaoSocial,$NomeFantasia,$cnpj,$endereco,$numero,$cidade,$estado,$cep,$telefone1,$telefone2,$email,$login,$senha,$prefixo)";
-
-			if ($conexao->query($sql) === TRUE) {
-			  echo '<div id="mensagem">Novo usuário inserido com sucesso!</div>';
-			  //echo "New record created successfully";
-			} else {
-			  //echo "Error: " . $sql . "<br>" . $conexao->error;
-			  echo '<div id="mensagem">Novo usuário não cadastrado. <br> Erro: </div>'. $conexao->error;
-			}
-
-			$conexao->close();
-		}*/
 	}
 ?>

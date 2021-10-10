@@ -4,11 +4,11 @@
     include('../_codigos/mysql.php');
 
     session_start();
-    if(isset($_SESSION["usuario"]) == true && is_array($_SESSION["usuario"])== true){
+    if(isset($_SESSION["usuario"]) == true && is_array($_SESSION["usuario"])== true && $_SESSION["PermissaoAdmin"][0]== false){
         $id = $_SESSION["usuario"][1];
         $login = $_SESSION["usuario"][0];
     }else{
-        header('Location:../index.php');
+        header('Location:../_codigos/logout.php');
     }
 ?>
 

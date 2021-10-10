@@ -5,6 +5,14 @@
 
     //$sql = "SELECT c.RazaoSocial as Cliente, c.CodCliente as IdCliente, a.NomeAmostra as Amostra, a.CodAmostra as IdAmostra, m.NomeMet as Metodo, e.CodExame as IdExame FROM exame e INNER JOIN metodo m ON e.CodMetodo = m.CodMetodo INNER JOIN amostra a ON a.CodAmostra = e.CodAmostra  INNER JOIN cliente c ON c.CodCliente = a.CodCliente ORDER BY 1";
 
+    session_start();
+    if(isset($_SESSION["usuario"]) == true && is_array($_SESSION["usuario"])== true && $_SESSION["PermissaoAdmin"][0]== true){
+        $id = $_SESSION["usuario"][1];
+        $login = $_SESSION["usuario"][0];
+    }else{
+        header('Location:_codigos/logout.php');
+    }
+
 
 
     $sql = "SELECT a.CodAmostra, a.NomeAmostra, a.LoteProduto, a.PrincipioAtivo, c.RazaoSocial FROM amostra a INNER JOIN cliente c ON c.CodCliente = a.CodCliente ORDER BY 1";

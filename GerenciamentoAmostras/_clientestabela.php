@@ -4,6 +4,16 @@
     include('_codigos/mysql.php');
 
     //$sql = "SELECT Usuario, CodCliente FROM cliente WHERE Usuario = ? AND Senha = ?";
+    session_start();
+    if(isset($_SESSION["usuario"]) == true && is_array($_SESSION["usuario"])== true && $_SESSION["PermissaoAdmin"][0]== true){
+        $id = $_SESSION["usuario"][1];
+        $login = $_SESSION["usuario"][0];
+    }else{
+        header('Location:_codigos/logout.php');
+    }
+
+
+
     $sql = "SELECT * FROM cliente";
 	$query = Mysql::conectar()->prepare($sql);
     $query->execute();

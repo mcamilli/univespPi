@@ -4,6 +4,13 @@
     include('_codigos/mysql.php');
     include('_codigos/conexao.php');
     
+    session_start();
+    if(isset($_SESSION["usuario"]) == true && is_array($_SESSION["usuario"])== true && $_SESSION["PermissaoAdmin"][0]== true){
+        $id = $_SESSION["usuario"][1];
+        $login = $_SESSION["usuario"][0];
+    }else{
+        header('Location:_codigos/logout.php');
+    }
 ?>
 
 <!DOCTYPE html>
