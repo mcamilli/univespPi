@@ -30,7 +30,7 @@
         <header id="cabecalho">
             <hgroup>
                 <h1>Gerenciamento de Amostras</h1>
-                <h2>Usu�rio</h2>
+                <h2>Usuário</h2>
             </hgroup>
 
             <nav id="menu">
@@ -57,10 +57,10 @@
                         <h1>Opcoes</h1>
                         <ul type="1">
                             <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientes.php#novo" target="janela" alt="especifica��es da tela"/>Novo Cliente</a></li>
-                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientes.php#alterar" target="janela" alt="especifica��es da tela"/>Alterar Cliente</a></li>
+                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientescliente.php#alterar" target="janela" alt="especificações da tela"/>Alterar Cliente</a></li>
                             
                         </ul>
-                        <iframe src="_alteracoesamostras.php" name="janela" scrolling="no" id="frame-spec">
+                        <iframe src="_alteracoesamostrascliente.php" name="janela" scrolling="no" id="frame-spec">
                         </iframe>
                     </nav>
 

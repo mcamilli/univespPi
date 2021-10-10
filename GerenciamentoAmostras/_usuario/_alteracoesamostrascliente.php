@@ -1,7 +1,7 @@
 <?php
 	header('Content-Type: text/html; charset=utf-8');
-    include('_codigos/classes.php');
-    include('_codigos/mysql.php');
+    include('../_codigos/classes.php');
+    include('../_codigos/mysql.php');
 ?>
 
 <!DOCTYPE html>

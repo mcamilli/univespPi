@@ -30,7 +30,7 @@
         <header id="cabecalho">
             <hgroup>
                 <h1>Gerenciamento de Amostras</h1>
-                <h2>Usu�rio</h2>
+                <h2>Usuário</h2>
             </hgroup>
 
             <nav id="menu">
