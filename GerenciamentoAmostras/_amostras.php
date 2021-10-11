@@ -160,7 +160,6 @@
                 </fieldset>
             </form>
                 
-            </form>	
             <?php
                     if(isset($_POST['tSalvar']) && isset($_POST['form'])== "f_form"){
                         $Cliente = $_POST['tCliente'];

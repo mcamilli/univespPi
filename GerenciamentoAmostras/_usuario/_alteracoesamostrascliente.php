@@ -10,6 +10,40 @@
     }else{
         header('Location:../_codigos/logout.php');
     }
+
+
+        /* está funcionando
+    try
+    {
+        //"SELECT * FROM tbmeseros LEFT JOIN tbrestaurantes ON tbmeseros.rest_mesero = tbrestaurantes.id_restaurante WHERE tbmeseros.cad_mesero = ?"
+        //SELECT p.nome as produto, f.razao_social as fornecedor, c.descricao as categoria FROM produto p LEFT JOIN fornecedor f ON p.fornecedor=f.idfornecedor LEFT JOIN categoria c ON p.categoria=c.idcategoria ORDER BY 3
+        
+       $sql4 = "SELECT c.CodCliente, c.RazaoSocial, a.NomeAmostra, a.CodAmostra FROM amostra a JOIN cliente c ON c.CodCliente = a.CodCliente ORDER BY 2";
+       //$sql4 = "SELECT * FROM cliente";
+       $query4 = Mysql::conectar()->prepare($sql4);
+       $query4->execute();
+
+       foreach($query4 as $amostra){
+        echo $amostra['CodCliente']. " - " ;
+        echo $amostra['RazaoSocial']. " - ";
+        echo $amostra['NomeAmostra']. " - ";
+        echo $amostra['CodAmostra']. " - ";
+    ?>
+
+    <br>
+ 
+    
+    <?php
+       }
+       
+
+ 
+    }
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+    }*/
+
 ?>
 
 <!DOCTYPE html>
@@ -108,49 +142,107 @@
 
     <article id="novo">
         <header>
-            <h1>Cadastrar Amostra</h1>  
-            <h2>Cadastrar uma  nova amostra:</h2>
+            <h1>Cadastro amostra</h1>
+            <br>
+            <h2>Concluir cadastro de uma amostra</h2>
+            <br>
             <form method="POST" id="fNovaAmostra" name="cNovaAmostra">
                 <br>
                 <fieldset id="precadastro">
-                    <legend>Pré cadastro amostra:</legend>
+                    <legend>Concluir cadastro de uma amostra:</legend>
 
-                    <p><label >Cliente:</label>
+                    <p><label >Amostra:</label>
                     
-                    <select name="tCliente" id="cCliente" style="width:750px" onchange="selecionado()"> 
-                    <option value=""></option>
+                    <select name="tAmostra" id="tAmostra" style="width:700px" onchange="selecionado()"> 
+                    <option value="">Selecione uma amostra...</option>
                     <?php 
-                    
-                        $sql = "SELECT CodCliente, RazaoSocial FROM cliente";
-	                    $query = Mysql::conectar()->prepare($sql);
+                        session_start();
+                        $usuarioatual = (int) $_SESSION["usuario"][1];
+                        $nulo = null;
+
+                        $sql = "SELECT CodAmostra, NomeAmostra FROM amostra WHERE CodCliente = $usuarioatual AND DataCadastro IS NULL";
+		                $query = Mysql::conectar()->prepare($sql);
                         $query->execute();
 
                         foreach($query as $dados){ 
                     ?> 
-                        <option value="<?php echo $dados['CodCliente']; ?>"><?php echo $dados['RazaoSocial']; ?></option> <?php } ?> 
+                        <option value="<?php echo $dados['CodAmostra']; ?>"><?php echo $dados['NomeAmostra']; ?></option> <?php } ?> 
                     </select>
 
-
-                        <label for="cIdCliente"> ID cliente:</label><input type="text" name="tIdCliente" id="cIdCliente" size="20" maxlength="20"/></p>
-                        <p><label for="cNovaAmostra"> Nova Amostra:</label><input type="text" name="tNovaAmostra" id="cNovaAmostra" size="70" maxlength="70"/></p>
+                        <label for="cIdAmostra"> ID Amostra:</label><input type="text" name="cIdAmostra" id="cIdAmostra" size="22" maxlength="23" disabled=""/></p>
+                        <p><label for="cPrincipioAtivo"> Princípio Ativo:</label><input type="text" name="cPrincipioAtivo" id="cPrincipioAtivo" size="70" maxlength="70" placeholder="e.g. cloreto de sódio; polietilenoglicol; 2-mercaptoetanol" disabled=""/>
+                        <label for="cLoteProduto"> Lote:</label><input type="text" name="cLoteProduto" id="cLoteProduto" size="27" maxlength="27" disabled=""/>
+                        </p>
+                        <p><label for="tDataFabricacao">Data Fabricação:<input type="date" nome="tDataFabricacao" id="tDataFabricacao" disabled="" />
+                        <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="tArmazenamento" id="tArmazenamento" disabled="">
+                            <option>selecione...</option>
+                            <option>temp. ambiente</option>
+                            <option>4ºC</option>
+                            <option>-20ºC</option>
+                            <option>-80ºC</option>
+                        </select>
+                        <label for="cQtdAmostra"> Qtd. Amostra:</label><input type="text" name="cQtdAmostra" id="cQtdAmostra" size="28" maxlength="28" placeholder="e.g. 100g, 10 peças (20cm x 20cm)" disabled=""/>
+                        </p>
+                        <p>
+                        <label for="cConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="cConcetracaoAtivo" id="cConcetracaoAtivo" size="27" maxlength="27" placeholder="e.g. 10mg/mL, 50ng/mL, 10%" disabled=""/>
+                        <label for="cFormCentesimal"> Fórmula Centesimal:</label><input type="text" name="cFormCentesimal" id="cFormCentesimal" size="27" maxlength="27" placeholder="e.g. 10 ppm; 25 ppb" disabled=""/>
+                        </p>
+                        <p><p><label for="cResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="cResponsavelEnvio" id="cResponsavelEnvio" size="70" maxlength="70" disabled=""/>
+                        </p>
+                        <p>
+                        <label for="cMen">Observação:</label>
+                        <textarea nome="cObsAmostra" id="cObsAmostra" name="cObsAmostra" cols="60" rows="5" placeholder="Se necessário, deixe uma observação" disabled=""></textarea>
+                        </p>
                         </fieldset>
                         <br>
 
                         <div><input type="hidden" name="form" value="f_form"/></div>
-                         <p id="botoes"><div id="botoes"><input type="submit" id="cSalvar" name="tSalvar" onclick="validar()"/>
+                         <p id="botoes"><div id="botoes"><input type="submit" id="cSalvar" name="cSalvar"  disabled="" onclick="validar()"/>
                         <input type="reset" name="limpar2" value="Limpar"/></div></p>
                 
                 
                     <script>
                         function selecionado() {
-                            var x = document.getElementById("cCliente").value;
-                            document.getElementById("cIdCliente").value = x;
+                            var x = document.getElementById("tAmostra").value;
+                            document.getElementById("cIdAmostra").value = x;
+                            habilitar();
                         }
                     </script>
                 </fieldset>
-            </form>
                 
-            </form>	
+            </form>
+
+        <script type="text/javascript">
+            function habilitar(){
+                if(document.getElementById('tAmostra').value == 0){
+                    document.getElementById('cPrincipioAtivo').disabled = true;
+                    document.getElementById('cLoteProduto').disabled = true;
+                    document.getElementById('tDataFabricacao').disabled = true;
+                    document.getElementById('tArmazenamento').disabled = true;
+                    document.getElementById('cQtdAmostra').disabled = true;
+                    document.getElementById('cConcetracaoAtivo').disabled = true;
+                    document.getElementById('cFormCentesimal').disabled = true;
+                    document.getElementById('cResponsavelEnvio').disabled = true;
+                    document.getElementById('cObsAmostra').disabled = true;
+                    document.getElementById('cSalvar').disabled = true;
+
+                }
+                if(document.getElementById('tAmostra').value != 0){
+                    document.getElementById('cPrincipioAtivo').disabled = false;
+                    document.getElementById('cLoteProduto').disabled = false;
+                    document.getElementById('tDataFabricacao').disabled = false;
+                    document.getElementById('tArmazenamento').disabled = false;
+                    document.getElementById('cQtdAmostra').disabled = false;
+                    document.getElementById('cConcetracaoAtivo').disabled = false;
+                    document.getElementById('cFormCentesimal').disabled = false;
+                    document.getElementById('cResponsavelEnvio').disabled = false;
+                    document.getElementById('cObsAmostra').disabled = false;
+                    document.getElementById('cSalvar').disabled = false;
+                }
+            }
+        </script>
+                
+            
             <?php
                     if(isset($_POST['tSalvar']) && isset($_POST['form'])== "f_form"){
                         $Cliente = $_POST['tCliente'];
@@ -239,8 +331,8 @@
     <article id="outros1">
 
         <header>
-            <h1>Atribuir exame</h1>
-            <h2>Atribuir exame ainda sob desenvolvimento</h2>
+            <h1>Cadastro amostra</h1>
+            <h2>Concluir cadastro amostra</h2>
 
             <fieldset id="login">
                 <legend>Nova Amostra:</legend>
