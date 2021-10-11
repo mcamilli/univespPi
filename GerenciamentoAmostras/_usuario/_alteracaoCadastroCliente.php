@@ -48,15 +48,48 @@
             float: right;
             margin-left: 5px;
         }
-                fieldset#login{
-            font-size: 14pt;
+        form{
+            font-size: 13pt;
         }
+
         input{
-            font-size: 14pt;
+            font-size: 13pt;
         }
         select{
-            font-size: 14pt;
+            font-size: 13pt;
         }
+        fieldset{
+            font-size: 13pt;
+        }
+
+        div#botoes{
+            width: 300px;
+            margin: 0 auto;
+        }
+        iframe#TabelaTestes {
+            width: 1080px;
+            height: 500px;
+            overflow-x: scroll !important;
+            overflow-y: scroll !important;
+        }
+        article#inicio{
+            padding-left: 90px;
+        }
+
+    iframe#TabelaTestes::-webkit-scrollba {
+        display: yes;
+    }
+    iframe#tabela_metodos {
+        width: 1080px;
+        height: 200px;
+        overflow-x: scroll !important;
+        overflow-y: scroll !important;
+    }
+    
+    iframe#tabela_metodos::-webkit-scrollba {
+    display: yes;
+    }
+
     </style>
 </head>
 <body>

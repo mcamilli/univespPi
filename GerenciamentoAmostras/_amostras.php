@@ -12,39 +12,7 @@
         header('Location:_codigos/logout.php');
     }
 
-    //include('_codigos/sub_categorias.php');
 
-    /* está funcionando
-    try
-    {
-        //"SELECT * FROM tbmeseros LEFT JOIN tbrestaurantes ON tbmeseros.rest_mesero = tbrestaurantes.id_restaurante WHERE tbmeseros.cad_mesero = ?"
-        //SELECT p.nome as produto, f.razao_social as fornecedor, c.descricao as categoria FROM produto p LEFT JOIN fornecedor f ON p.fornecedor=f.idfornecedor LEFT JOIN categoria c ON p.categoria=c.idcategoria ORDER BY 3
-        
-       $sql4 = "SELECT c.CodCliente, c.RazaoSocial, a.NomeAmostra, a.CodAmostra FROM amostra a JOIN cliente c ON c.CodCliente = a.CodCliente ORDER BY 2";
-       //$sql4 = "SELECT * FROM cliente";
-       $query4 = Mysql::conectar()->prepare($sql4);
-       $query4->execute();
-
-       foreach($query4 as $amostra){
-        echo $amostra['CodCliente']. " - " ;
-        echo $amostra['RazaoSocial']. " - ";
-        echo $amostra['NomeAmostra']. " - ";
-        echo $amostra['CodAmostra']. " - ";
-    ?>
-
-    <br>
- 
-    
-    <?php
-       }
-       
-
- 
-    }
-    catch(Exception $e)
-    {
-        echo $e->getMessage();
-    }*/
 ?>
 
 <!DOCTYPE html>

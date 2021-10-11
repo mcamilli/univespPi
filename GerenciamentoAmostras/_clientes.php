@@ -132,10 +132,7 @@
         </form>	
         <script>
             function Enviar(){
-                //var texto1 = document.getElementById("cform").value;
-                //document.getElementById("cform").value = "1";
-                //var text02 = document.getElementById("cform").value;
-                //alert("deu certo. o Valor era " + texto1 +" agora é " + text02);
+                
                 var $mensagem = "";
                 if(document.getElementById("cRazaoSocial").value == ""){
                     if($mensagem == ""){
@@ -239,10 +236,7 @@
         </script>
 
       <P>  <?php
-                //$_POST['LoginValida']
-            /*if($_POST['tform'] == "1"){
-                echo " o valor é ". $_POST['tform'];
-            }*/
+            
             if(isset($_POST['tform'])){
                 if($_POST['tform'] == "1"){
                 // session_start();
