@@ -254,7 +254,6 @@
                     document.getElementById('cFormCentesimal').value = null;
                     document.getElementById('cResponsavelEnvio').value = null;
                     document.getElementById('cObsAmostra').value = null;
-                    document.getElementById('cSalvar').value = null;
             }
         </script>
                 
@@ -392,12 +391,12 @@
 
                         <p><label >Amostra:</label>
                         
-                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="clicou()"> 
+                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="selecionado2()"> 
                         <option value="">Selecione uma amostra...</option>
                         <?php 
                             session_start();
                             $usuarioatual = (int) $_SESSION["usuario"][1];
-                            $nulo = null;
+                            //$nulo = null;
 
                             $sql = "SELECT * FROM amostra WHERE CodCliente = $usuarioatual AND DataCadastro IS NOT NULL AND DataRecebido IS NULL";
                             $query = Mysql::conectar()->prepare($sql);
@@ -448,7 +447,7 @@
                             function selecionado2() {
                                 var x = document.getElementById("Atr_Amostra").value;
                                 document.getElementById("Atr_IdAmostra").value = x;
-                                habilitar2();
+                                clicou();
                             }
                         </script>
                     </fieldset>
@@ -456,39 +455,33 @@
 
             <script type="text/javascript">
                 function clicou(){
-                    alert ("acessou o clicou.")
-
+ 
                     <?php 
-                        
-                        $AmostaSelecionada = 21; //(int)$_POST['Atr_Amostra'];
+                        if(isset($_POST['Atr_Amostra']) && $_POST['Atr_Amostra'] !== 0) {
+                        $AmostaSelecionada = (int)$_POST['Atr_Amostra'];
                         $sql = "SELECT * FROM amostra WHERE CodAmostra = $AmostaSelecionada";
                         $query = Mysql::conectar()->prepare($sql);
                         $query->execute();
-                        foreach($query as $dados){ 
-                    ?>
-                    
-                    document.getElementById('Atr_PrincipioAtivo').value = "<?php echo $dados['PrincipioAtivo'];?>";
-                    document.getElementById('Atr_LoteProduto').value = "<?php echo $dados['LoteProduto'];?>";
-                    document.getElementById('Atr_dateFrom').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_Armazenamento').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_QtdAmostra').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_ConcetracaoAtivo').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_FormCentesimal').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_ResponsavelEnvio').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_ObsAmostra').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-                    document.getElementById('Atr_Salvar').value = "<?php echo $dados['PrincipioAtivo']; ?>";
-
-                    <?php 
                         }
                     ?>
 
-
-
-
-
-                    //habilitar2();
+                    document.getElementById('Atr_PrincipioAtivo').value = "<?php echo $dados['PrincipioAtivo'];?>";
+                    document.getElementById('Atr_LoteProduto').value = "<?php echo $dados['LoteProduto'];?>";
+                    document.getElementById('Atr_dateFrom').value = "<?php echo $dados['DataFabricacao'];?>";
+                    document.getElementById('Atr_Armazenamento').value = "<?php echo $dados['Armazenamento'];?>";
+                    document.getElementById('Atr_QtdAmostra').value = "<?php echo $dados['QtdAmostra'];?>";
+                    document.getElementById('Atr_ConcetracaoAtivo').value = "<?php echo $dados['ConcetracaoAtivo'];?>";
+                    document.getElementById('Atr_FormCentesimal').value = "<?php echo $dados['FormCentesimal'];?>";
+                    document.getElementById('Atr_ResponsavelEnvio').value = "<?php echo $dados['ResponsavelEnvio'];?>";
+                    document.getElementById('Atr_ObsAmostra').value = "<?php echo $dados['ObsAmostra'];?>";
+                    
+                    if(document.getElementById('Atr_Amostra').value == 0){
+                        limpar2();
+                    }
                 }
+                </script>
 
+            <script type="text/javascript">
                 function habilitar2(){
                     
                     if(document.getElementById('Atr_Amostra').value == 0){
@@ -528,7 +521,6 @@
                         document.getElementById('Atr_FormCentesimal').value = null;
                         document.getElementById('Atr_ResponsavelEnvio').value = null;
                         document.getElementById('Atr_ObsAmostra').value = null;
-                        document.getElementById('Atr_Salvar').value = null;
                 }
             </script>
                     
