@@ -50,14 +50,14 @@
                             try
                             {
 
-                               $sql = "SELECT Usuario, CodCliente FROM cliente WHERE Usuario = ? AND Senha = ?";
+                               $sql = "SELECT Usuario, CodCliente, RazaoSocial FROM cliente WHERE Usuario = ? AND Senha = ?";
 		                       $query = Mysql::conectar()->prepare($sql);
                                $query->execute(array($login, md5($senha)));
 
                                if($query->rowCount() == TRUE){
                                    $user = $query->fetchAll(PDO::FETCH_ASSOC)[0];
                                     session_start();
-                                    $_SESSION['usuario'] = array($user["Usuario"], $user["CodCliente"]);
+                                    $_SESSION['usuario'] = array($user["Usuario"], $user["CodCliente"], $user["RazaoSocial"] );
                                     $_SESSION['PermissaoAdmin'] = array(False);
                                     echo "<script>window.location = '_usuario/iniciocliente.php'</script>";
 
