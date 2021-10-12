@@ -158,7 +158,6 @@
                     <?php 
                         session_start();
                         $usuarioatual = (int) $_SESSION["usuario"][1];
-                        $nulo = null;
 
                         $sql = "SELECT CodAmostra, NomeAmostra FROM amostra WHERE CodCliente = $usuarioatual AND DataCadastro IS NULL";
 		                $query = Mysql::conectar()->prepare($sql);
@@ -260,10 +259,6 @@
             
             <?php
                     if(isset($_POST['cSalvar']) && isset($_POST['form'])== "f_form"){
-                       // $Cliente = $_POST['tCliente'];
-                        //$IdCliente = (int)$_POST['tIdCliente'];
-                        //$NovaAmostra = $_POST['tNovaAmostra'];
-                        echo "teste update";
 
                         $IdAmostra = $_POST['cAmostra'];
                         $PrincipioAtivo; 
@@ -396,7 +391,6 @@
                         <?php 
                             session_start();
                             $usuarioatual = (int) $_SESSION["usuario"][1];
-                            //$nulo = null;
 
                             $sql = "SELECT * FROM amostra WHERE CodCliente = $usuarioatual AND DataCadastro IS NOT NULL AND DataRecebido IS NULL";
                             $query = Mysql::conectar()->prepare($sql);
@@ -439,9 +433,11 @@
                             </fieldset>
                             <br>
 
-                            <div><input type="hidden" name="form" value="f_form"/></div>
-                            <p id="botoes"><div id="botoes"><input type="submit" id="Atr_Salvar" name="Atr_Salvar"  disabled="" onclick="validar()"/>
-                            <input type="reset" name="limpar2" value="Limpar"/></div></p>
+                            <div><input type="hidden" name="Atr_form" value="f_form"/></div>
+                            <p id="botoes"><div id="botoes">
+                            <input type="button" id="Atr_editar" name="Atr_editar" value="Editar" disabled=""  onclick="habilitar2()"/>
+                            <input type="submit" id="Atr_Salvar" name="Atr_Salvar"  value="Salvar" disabled="" onclick="validar()"/>
+                            <input type="reset" name="limpar2" value="Limpar" onclick="desabilitarbotoes()"/></div></p>
                     
                         <script type="text/javascript">
                             function selecionado2() {
@@ -474,14 +470,22 @@
                     document.getElementById('Atr_FormCentesimal').value = "<?php echo $dados['FormCentesimal'];?>";
                     document.getElementById('Atr_ResponsavelEnvio').value = "<?php echo $dados['ResponsavelEnvio'];?>";
                     document.getElementById('Atr_ObsAmostra').value = "<?php echo $dados['ObsAmostra'];?>";
+                    document.getElementById('Atr_editar').disabled = false;
                     
                     if(document.getElementById('Atr_Amostra').value == 0){
+                        document.getElementById('Atr_editar').disabled = true;
                         limpar2();
                     }
                 }
                 </script>
 
             <script type="text/javascript">
+
+                function desabilitarbotoes(){
+                    document.getElementById('Atr_Salvar').disabled = true;
+                    document.getElementById('Atr_editar').disabled = true;
+                }
+
                 function habilitar2(){
                     
                     if(document.getElementById('Atr_Amostra').value == 0){
@@ -495,6 +499,7 @@
                         document.getElementById('Atr_ResponsavelEnvio').disabled = true;
                         document.getElementById('Atr_ObsAmostra').disabled = true;
                         document.getElementById('Atr_Salvar').disabled = true;
+                        document.getElementById('Atr_editar').disabled = true;
                         limpar2();
 
                     }
@@ -509,6 +514,7 @@
                         document.getElementById('Atr_ResponsavelEnvio').disabled = false;
                         document.getElementById('Atr_ObsAmostra').disabled = false;
                         document.getElementById('Atr_Salvar').disabled = false;
+                        
                     }
                 }
                 function limpar2(){
@@ -526,11 +532,7 @@
                     
                 
                 <?php
-                        if(isset($_POST['Atr_Salvar']) && isset($_POST['form'])== "f_form"){
-                        // $Cliente = $_POST['tCliente'];
-                            //$IdCliente = (int)$_POST['tIdCliente'];
-                            //$NovaAmostra = $_POST['tNovaAmostra'];
-                            echo "teste update";
+                        if(isset($_POST['Atr_Salvar']) && isset($_POST['Atr_form']) == "f_form"){
 
                             $IdAmostra = $_POST['Atr_Amostra'];
                             $PrincipioAtivo; 
@@ -632,7 +634,7 @@
                                 
                                 $sql->execute(array($PrincipioAtivo, $LoteProduto, $DataFabricacao, $Armazenamento, $QtdAmostra, $ConcetracaoAtivo, $FormCentesimal, $ResponsavelEnvio, $ObsAmostra, $DataCadastro, $IdAmostra));
 
-                                echo "Os dados foram salvos!";
+                                echo "O registro foi alterado com sucesso!";
                                 return TRUE;
                             }
                         }
