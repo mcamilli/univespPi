@@ -153,7 +153,7 @@
 
                     <p><label >Amostra:</label>
                     
-                    <select name="tAmostra" id="tAmostra" style="width:700px" onchange="selecionado()"> 
+                    <select name="cAmostra" id="cAmostra" style="width:700px" onchange="selecionado()"> 
                     <option value="">Selecione uma amostra...</option>
                     <?php 
                         session_start();
@@ -169,12 +169,17 @@
                         <option value="<?php echo $dados['CodAmostra']; ?>"><?php echo $dados['NomeAmostra']; ?></option> <?php } ?> 
                     </select>
 
-                        <label for="cIdAmostra"> ID Amostra:</label><input type="text" name="cIdAmostra" id="cIdAmostra" size="22" maxlength="23" disabled=""/></p>
+                   
+
+                        <label for="cIdAmostra"> ID Amostra:</label><input type="text" name="cIdAmostra" id="cIdAmostra" size="22" maxlength="23" value="" disabled=""/></p>
                         <p><label for="cPrincipioAtivo"> Princípio Ativo:</label><input type="text" name="cPrincipioAtivo" id="cPrincipioAtivo" size="70" maxlength="70" placeholder="e.g. cloreto de sódio; polietilenoglicol; 2-mercaptoetanol" disabled=""/>
                         <label for="cLoteProduto"> Lote:</label><input type="text" name="cLoteProduto" id="cLoteProduto" size="27" maxlength="27" disabled=""/>
                         </p>
-                        <p><label for="tDataFabricacao">Data Fabricação:<input type="date" nome="tDataFabricacao" id="tDataFabricacao" disabled="" />
-                        <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="tArmazenamento" id="tArmazenamento" disabled="">
+                        
+                        <p><label for="dateFabricacao">Data Fabricação:<input type="date" name="dateFrom" id="dateFrom"  disabled="" />
+                        <br/>
+
+                        <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="cArmazenamento" id="cArmazenamento" disabled="">
                             <option>selecione...</option>
                             <option>temp. ambiente</option>
                             <option>4ºC</option>
@@ -200,38 +205,37 @@
                          <p id="botoes"><div id="botoes"><input type="submit" id="cSalvar" name="cSalvar"  disabled="" onclick="validar()"/>
                         <input type="reset" name="limpar2" value="Limpar"/></div></p>
                 
-                
                     <script>
                         function selecionado() {
-                            var x = document.getElementById("tAmostra").value;
+                            var x = document.getElementById("cAmostra").value;
                             document.getElementById("cIdAmostra").value = x;
                             habilitar();
                         }
                     </script>
                 </fieldset>
-                
             </form>
 
         <script type="text/javascript">
             function habilitar(){
-                if(document.getElementById('tAmostra').value == 0){
+                if(document.getElementById('cAmostra').value == 0){
                     document.getElementById('cPrincipioAtivo').disabled = true;
                     document.getElementById('cLoteProduto').disabled = true;
-                    document.getElementById('tDataFabricacao').disabled = true;
-                    document.getElementById('tArmazenamento').disabled = true;
+                    document.getElementById('dateFrom').disabled = true;
+                    document.getElementById('cArmazenamento').disabled = true;
                     document.getElementById('cQtdAmostra').disabled = true;
                     document.getElementById('cConcetracaoAtivo').disabled = true;
                     document.getElementById('cFormCentesimal').disabled = true;
                     document.getElementById('cResponsavelEnvio').disabled = true;
                     document.getElementById('cObsAmostra').disabled = true;
                     document.getElementById('cSalvar').disabled = true;
+                    limpar();
 
                 }
-                if(document.getElementById('tAmostra').value != 0){
+                if(document.getElementById('cAmostra').value != 0){
                     document.getElementById('cPrincipioAtivo').disabled = false;
                     document.getElementById('cLoteProduto').disabled = false;
-                    document.getElementById('tDataFabricacao').disabled = false;
-                    document.getElementById('tArmazenamento').disabled = false;
+                    document.getElementById('dateFrom').disabled = false;
+                    document.getElementById('cArmazenamento').disabled = false;
                     document.getElementById('cQtdAmostra').disabled = false;
                     document.getElementById('cConcetracaoAtivo').disabled = false;
                     document.getElementById('cFormCentesimal').disabled = false;
@@ -240,53 +244,136 @@
                     document.getElementById('cSalvar').disabled = false;
                 }
             }
+            function limpar(){
+                    document.getElementById('cPrincipioAtivo').value = null;
+                    document.getElementById('cLoteProduto').value = null;
+                    document.getElementById('dateFrom').value = null;
+                    document.getElementById('cArmazenamento').value = null;
+                    document.getElementById('cQtdAmostra').value = null;
+                    document.getElementById('cConcetracaoAtivo').value = null;
+                    document.getElementById('cFormCentesimal').value = null;
+                    document.getElementById('cResponsavelEnvio').value = null;
+                    document.getElementById('cObsAmostra').value = null;
+                    document.getElementById('cSalvar').value = null;
+            }
         </script>
                 
             
             <?php
-                    if(isset($_POST['tSalvar']) && isset($_POST['form'])== "f_form"){
-                        $Cliente = $_POST['tCliente'];
-                        $IdCliente = (int)$_POST['tIdCliente'];
-                        $NovaAmostra = $_POST['tNovaAmostra'];
+                    if(isset($_POST['cSalvar']) && isset($_POST['form'])== "f_form"){
+                       // $Cliente = $_POST['tCliente'];
+                        //$IdCliente = (int)$_POST['tIdCliente'];
+                        //$NovaAmostra = $_POST['tNovaAmostra'];
+                        echo "teste update";
+
+                        $IdAmostra = $_POST['cAmostra'];
+                        $PrincipioAtivo; 
+                        $LoteProduto;
+                        $DataFabricacao = date('y/m/d', strtotime($_POST['dateFrom']));
+                        $Armazenamento;
+                        $QtdAmostra;
+                        $ConcetracaoAtivo; 
+                        $FormCentesimal;
+                        $ResponsavelEnvio; 
+                        $ObsAmostra;
+                        $DataCadastro = date('y/m/d');
+
+
+                        if(isset($_POST['cAmostra'])){$IdAmostra = (int)$_POST['cAmostra'];}
+                        if(isset($_POST['cPrincipioAtivo'])){$PrincipioAtivo = $_POST['cPrincipioAtivo'];}
+                        if(isset($_POST['cLoteProduto'])){$LoteProduto = $_POST['cLoteProduto'];}
+                        if(isset($_POST['dateFabricacao'])){
+                            $DataFabricacao = date('Y-m-d', strtotime($_POST['dateFrom']));
+                            
+                        }
+                        if(isset($_POST['cArmazenamento'])){$Armazenamento = $_POST['cArmazenamento'];}
+                        if(isset($_POST['cQtdAmostra'])){$QtdAmostra = $_POST['cQtdAmostra'];}
+                        if(isset($_POST['cConcetracaoAtivo'])){$ConcetracaoAtivo = $_POST['cConcetracaoAtivo'];}
+                        if(isset($_POST['cFormCentesimal'])){$FormCentesimal = $_POST['cFormCentesimal'];}
+                        if(isset($_POST['cResponsavelEnvio'])){$ResponsavelEnvio = $_POST['cResponsavelEnvio'];}
+                        if(isset($_POST['cObsAmostra'])){$ObsAmostra = $_POST['cObsAmostra'];}
 
                         $texto = "";
-                        if($Cliente == "") { 
-                            //alert("preencha o campo Nova amostra");
+                        if($PrincipioAtivo == "") { 
                             if($texto == ""){
-                                $texto = "Preencha o campo Cliente";
+                                $texto = "Preencha o campo Princípio ativo";
                             }else{
-                                $texto = $texto. "; Cliente";
+                                $texto = $texto. "; Princípio ativo";
                             }
                         }
-                        if($IdCliente == "") {
+                        if($LoteProduto == "") {
                             if($texto == ""){
-                                $texto = "Preencha o campo ID Cliente";
+                                $texto = "Preencha o campo Lote do produto";
                             }else{
-                                $texto = $texto. "; ID Cliente";
+                                $texto = $texto. "; Lote do produto";
                             }
                             
                         }
-                        if($NovaAmostra == "") {
+                        if($DataFabricacao == NULL) {
                             if($texto == ""){
-                                $texto = "Preencha o campo Nova Amostra";
+                                $texto = "Preencha o campo Data de fabricação";
                             }else{
-                                $texto = $texto. "; Nova Amostra";
+                                $texto = $texto. "; Data de fabricação";
                             }
                         }
+                        if($Armazenamento == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Armazenamento";
+                            }else{
+                                $texto = $texto. "; Amarzenamento";
+                            }
+                        }
+                        if($QtdAmostra == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Qtd. de amostra";
+                            }else{
+                                $texto = $texto. "; Qtd. de amostra";
+                            }
+                        }
+                        if($ConcetracaoAtivo == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Concentração princípio ativo";
+                            }else{
+                                $texto = $texto. "; Concentração princípio ativo";
+                            }
+                        }
+                        if($FormCentesimal == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo fórmula centesimal";
+                            }else{
+                                $texto = $texto. "; fórmula centesimal";
+                            }
+                        }
+                        if($ResponsavelEnvio == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Responsável pelo envio";
+                            }else{
+                                $texto = $texto. "; Responsável pelo envio";
+                            }
+                        }
+                        
                         if($texto !=  "")
-                        {
+                        {   
+                            $texto = $texto. ".";
                             echo $texto;
                         }else{
-                            $query = "INSERT INTO amostra  (NomeAmostra, CodCliente) VALUES (?,?)";
+                            
+                            $query = "UPDATE amostra SET PrincipioAtivo = ?, LoteProduto = ?, DataFabricacao = ?, Armazenamento = ?, 
+                            QtdAmostra = ?, ConcetracaoAtivo = ?, FormCentesimal = ?, ResponsavelEnvio = ?, ObsAmostra = ?, DataCadastro = ?
+                            WHERE CodAmostra = ?";
+                            
                             $sql = Mysql::conectar()->prepare($query);
-                            $sql->execute(array($NovaAmostra, $IdCliente));
-                            echo "amostra cadastrada";
+                            
+                            $sql->execute(array($PrincipioAtivo, $LoteProduto, $DataFabricacao, $Armazenamento, $QtdAmostra, $ConcetracaoAtivo, $FormCentesimal, $ResponsavelEnvio, $ObsAmostra, $DataCadastro, $IdAmostra));
+
+                            echo "Os dados foram salvos!";
                             return TRUE;
                         }
                     }
                 ?>
             
         </header>
+
     </article>
 
 
