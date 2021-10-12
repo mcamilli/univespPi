@@ -380,39 +380,253 @@
     <article id="alterar">
 
         <header>
-            <h1>
-                Alterar Amostra
-            </h1>        
-            <h2>
-                adicionar campos de alteração
-            </h2>        
+                <h1>Alterar Registro</h1>
+                <br>
+                <h2>Alterar registro de uma amostra</h2>
+                <br>
+                <h3>Apenas amostras que ainda não foram recebidas pelo laboratório poderão ser alteradas.</h3>
+                <form method="POST" id="fAlterar_Registro" name="Atr_Alterar_Registro">
+                    <br>
+                    <fieldset id="precadastro">
+                        <legend>Concluir cadastro de uma amostra:</legend>
 
-             <fieldset id="login">
-                <legend>Nova Amostra:</legend>
+                        <p><label >Amostra:</label>
+                        
+                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="Atr_preencher()"> 
+                        <option value="">Selecione uma amostra...</option>
+                        <?php 
+                            session_start();
+                            $usuarioatual = (int) $_SESSION["usuario"][1];
+                            $nulo = null;
+
+                            $sql = "SELECT * FROM amostra WHERE CodCliente = $usuarioatual AND DataCadastro IS NOT NULL AND DataRecebido IS NULL";
+                            $query = Mysql::conectar()->prepare($sql);
+                            $query->execute();
+
+                            foreach($query as $dados){ 
+                        ?> 
+                            <option value="<?php echo $dados['CodAmostra']; ?>"><?php echo $dados['NomeAmostra']; ?></option> <?php } ?> 
+                        </select>
+
+                    
+
+                            <label for="Atr_IdAmostra"> ID Amostra:</label><input type="text" name="Atr_IdAmostra" id="Atr_IdAmostra" size="22" maxlength="23" value="" disabled=""/></p>
+                            <p><label for="Atr_PrincipioAtivo"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo" id="Atr_PrincipioAtivo" size="70" maxlength="70" disabled=""/>
+                            <label for="LoteProduto"> Lote:</label><input type="text" name="Atr_LoteProduto" id="Atr_LoteProduto" size="27" maxlength="27" disabled=""/>
+                            </p>
+                            
+                            <p><label for="Atr_dateFrom">Data Fabricação:<input type="date" name="Atr_dateFrom" id="Atr_dateFrom"  disabled="" />
+                            
+
+                            <label for="Atr_Armazenamento">Temperatura de Armazenamento:</label><select name="Atr_Armazenamento" id="Atr_Armazenamento" disabled="">
+                                <option>selecione...</option>
+                                <option>temp. ambiente</option>
+                                <option>4ºC</option>
+                                <option>-20ºC</option>
+                                <option>-80ºC</option>
+                            </select>
+                            <label for="Atr_QtdAmostra"> Qtd. Amostra:</label><input type="text" name="Atr_QtdAmostra" id="Atr_QtdAmostra" size="28" maxlength="28"  disabled=""/>
+                            </p>
+                            <p>
+                            <label for="Atr_ConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="Atr_ConcetracaoAtivo" id="Atr_ConcetracaoAtivo" size="27" maxlength="27" disabled=""/>
+                            <label for="Atr_FormCentesimal"> Fórmula Centesimal:</label><input type="text" name="Atr_FormCentesimal" id="Atr_FormCentesimal" size="27" maxlength="27" disabled=""/>
+                            </p>
+                            <p><p><label for="Atr_ResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="Atr_ResponsavelEnvio" id="Atr_ResponsavelEnvio" size="70" maxlength="70" disabled=""/>
+                            </p>
+                            <p>
+                            <label for="Atr_Men">Observação:</label>
+                            <textarea nome="Atr_ObsAmostra" id="Atr_ObsAmostra" name="Atr_ObsAmostra" cols="60" rows="5" disabled=""></textarea>
+                            </p>
+                            </fieldset>
+                            <br>
+
+                            <div><input type="hidden" name="form" value="f_form"/></div>
+                            <p id="botoes"><div id="botoes"><input type="submit" id="Atr_Salvar" name="Atr_Salvar"  disabled="" onclick="validar()"/>
+                            <input type="reset" name="limpar2" value="Limpar"/></div></p>
+                    
+                        <script>
+                            function selecionado2() {
+                                var x = document.getElementById("Atr_Amostra").value;
+                                document.getElementById("Atr_IdAmostra").value = x;
+                                habilitar2();
+                            }
+                        </script>
+                    </fieldset>
+                </form>
+
+            <script type="text/javascript">
+                function Atr_preencher(){
+                    document.getElementById('Atr_PrincipioAtivo').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_LoteProduto').value = <?php echo $dados['LoteProduto']; ?>;
+                        document.getElementById('Atr_dateFrom').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_Armazenamento').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_QtdAmostra').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_ConcetracaoAtivo').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_FormCentesimal').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_ResponsavelEnvio').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_ObsAmostra').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                        document.getElementById('Atr_Salvar').value = <?php echo $dados['PrincipioAtivo']; ?>;
+
+                }
+
+                function habilitar2(){
+                    if(document.getElementById('Atr_Amostra').value == 0){
+                        document.getElementById('Atr_PrincipioAtivo').disabled = true;
+                        document.getElementById('Atr_LoteProduto').disabled = true;
+                        document.getElementById('Atr_dateFrom').disabled = true;
+                        document.getElementById('Atr_Armazenamento').disabled = true;
+                        document.getElementById('Atr_QtdAmostra').disabled = true;
+                        document.getElementById('Atr_ConcetracaoAtivo').disabled = true;
+                        document.getElementById('Atr_FormCentesimal').disabled = true;
+                        document.getElementById('Atr_ResponsavelEnvio').disabled = true;
+                        document.getElementById('Atr_ObsAmostra').disabled = true;
+                        document.getElementById('Atr_Salvar').disabled = true;
+                        limpar2();
+
+                    }
+                    if(document.getElementById('Atr_Amostra').value != 0){
+                        document.getElementById('Atr_PrincipioAtivo').disabled = false;
+                        document.getElementById('Atr_LoteProduto').disabled = false;
+                        document.getElementById('Atr_dateFrom').disabled = false;
+                        document.getElementById('Atr_Armazenamento').disabled = false;
+                        document.getElementById('Atr_QtdAmostra').disabled = false;
+                        document.getElementById('Atr_ConcetracaoAtivo').disabled = false;
+                        document.getElementById('Atr_FormCentesimal').disabled = false;
+                        document.getElementById('Atr_ResponsavelEnvio').disabled = false;
+                        document.getElementById('Atr_ObsAmostra').disabled = false;
+                        document.getElementById('Atr_Salvar').disabled = false;
+                    }
+                }
+                function limpar2(){
+                        document.getElementById('Atr_PrincipioAtivo').value = null;
+                        document.getElementById('Atr_LoteProduto').value = null;
+                        document.getElementById('Atr_dateFrom').value = null;
+                        document.getElementById('Atr_Armazenamento').value = null;
+                        document.getElementById('Atr_QtdAmostra').value = null;
+                        document.getElementById('Atr_ConcetracaoAtivo').value = null;
+                        document.getElementById('Atr_FormCentesimal').value = null;
+                        document.getElementById('Atr_ResponsavelEnvio').value = null;
+                        document.getElementById('Atr_ObsAmostra').value = null;
+                        document.getElementById('Atr_Salvar').value = null;
+                }
+            </script>
+                    
                 
-                    <p><label for="cLoginAdmin"> Cliente:</label><input type="text" name="tLoginAdmin" id="cLoginAdmin" size="70" maxlength="100"/>
-                    <label for="cLoginAdmin"> ID cliente:</label><input type="text" name="tLoginAdmin" id="cLoginAdmin" size="20" maxlength="20"/></p>
-                    <p><label for="cLoginAdmin"> Nome da Amostra:</label><input type="text" name="tLoginAdmin" id="cLoginAdmin" size="100" maxlength="100"/></p>
-                    <p><label for="cSenhaAdmin"> Quantidade de Amostra:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="20" maxlength="30"/>
-                    <label for="cEst">Temperatura de amarzenamento:</label><select name="tEst" id="cEst" style="width:150px;">
-                            <option selected>Ambiente</option>
-                            <option >2º a 8ºC</option>
-                            <option>-20º a -30ºC</option>
-                            <option>-70º a -80ºC</option>
-                    </select></p>
-                    <p><label for="cSenhaAdmin"> Formulação centesimal:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="30" maxlength="40"/>
-                    <label for="cSenhaAdmin"> Composto ativo:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="40" maxlength="100"/></p>
-                    <p><label for="cSenhaAdmin"> Concentração princípio ativo:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="30" maxlength="40"/>
-                    Data de fabricação:<input type="date" nome="tNasc" id="cNasc" /></p>
-                    <p><label for="cSenhaAdmin"> Lote:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="30" maxlength="30"/>
-                    <label for="cSenhaAdmin"> Responsável pelo cadastro:</label><input type="text" name="tSenhaAdmin" id="cSenhaAdmin" size="50" maxlength="70"/>
-                    </p>
-            </fieldset>
+                <?php
+                        if(isset($_POST['Atr_Salvar']) && isset($_POST['form'])== "f_form"){
+                        // $Cliente = $_POST['tCliente'];
+                            //$IdCliente = (int)$_POST['tIdCliente'];
+                            //$NovaAmostra = $_POST['tNovaAmostra'];
+                            echo "teste update";
 
-        </header>
-        <p>
-            colocar texto aqui
-        </p>        
+                            $IdAmostra = $_POST['Atr_Amostra'];
+                            $PrincipioAtivo; 
+                            $LoteProduto;
+                            $DataFabricacao = date('y/m/d', strtotime($_POST['Atr_dateFrom']));
+                            $Armazenamento;
+                            $QtdAmostra;
+                            $ConcetracaoAtivo; 
+                            $FormCentesimal;
+                            $ResponsavelEnvio; 
+                            $ObsAmostra;
+                            $DataCadastro = date('y/m/d');
+
+
+                            if(isset($_POST['Atr_Amostra'])){$IdAmostra = (int)$_POST['Atr_Amostra'];}
+                            if(isset($_POST['Atr_PrincipioAtivo'])){$PrincipioAtivo = $_POST['Atr_PrincipioAtivo'];}
+                            if(isset($_POST['Atr_LoteProduto'])){$LoteProduto = $_POST['Atr_LoteProduto'];}
+                            if(isset($_POST['dateFabricacao'])){
+                                $DataFabricacao = date('Y-m-d', strtotime($_POST['Atr_dateFrom']));
+                                
+                            }
+                            if(isset($_POST['Atr_Armazenamento'])){$Armazenamento = $_POST['Atr_Armazenamento'];}
+                            if(isset($_POST['Atr_QtdAmostra'])){$QtdAmostra = $_POST['Atr_QtdAmostra'];}
+                            if(isset($_POST['Atr_ConcetracaoAtivo'])){$ConcetracaoAtivo = $_POST['Atr_ConcetracaoAtivo'];}
+                            if(isset($_POST['Atr_FormCentesimal'])){$FormCentesimal = $_POST['Atr_FormCentesimal'];}
+                            if(isset($_POST['Atr_ResponsavelEnvio'])){$ResponsavelEnvio = $_POST['Atr_ResponsavelEnvio'];}
+                            if(isset($_POST['Atr_ObsAmostra'])){$ObsAmostra = $_POST['Atr_ObsAmostra'];}
+
+                            $texto = "";
+                            if($PrincipioAtivo == "") { 
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Princípio ativo";
+                                }else{
+                                    $texto = $texto. "; Princípio ativo";
+                                }
+                            }
+                            if($LoteProduto == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Lote do produto";
+                                }else{
+                                    $texto = $texto. "; Lote do produto";
+                                }
+                                
+                            }
+                            if($DataFabricacao == NULL) {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Data de fabricação";
+                                }else{
+                                    $texto = $texto. "; Data de fabricação";
+                                }
+                            }
+                            if($Armazenamento == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Armazenamento";
+                                }else{
+                                    $texto = $texto. "; Amarzenamento";
+                                }
+                            }
+                            if($QtdAmostra == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Qtd. de amostra";
+                                }else{
+                                    $texto = $texto. "; Qtd. de amostra";
+                                }
+                            }
+                            if($ConcetracaoAtivo == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Concentração princípio ativo";
+                                }else{
+                                    $texto = $texto. "; Concentração princípio ativo";
+                                }
+                            }
+                            if($FormCentesimal == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo fórmula centesimal";
+                                }else{
+                                    $texto = $texto. "; fórmula centesimal";
+                                }
+                            }
+                            if($ResponsavelEnvio == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Responsável pelo envio";
+                                }else{
+                                    $texto = $texto. "; Responsável pelo envio";
+                                }
+                            }
+                            
+                            if($texto !=  "")
+                            {   
+                                $texto = $texto. ".";
+                                echo $texto;
+                            }else{
+                                
+                                $query = "UPDATE amostra SET PrincipioAtivo = ?, LoteProduto = ?, DataFabricacao = ?, Armazenamento = ?, 
+                                QtdAmostra = ?, ConcetracaoAtivo = ?, FormCentesimal = ?, ResponsavelEnvio = ?, ObsAmostra = ?, DataCadastro = ?
+                                WHERE CodAmostra = ?";
+                                
+                                $sql = Mysql::conectar()->prepare($query);
+                                
+                                $sql->execute(array($PrincipioAtivo, $LoteProduto, $DataFabricacao, $Armazenamento, $QtdAmostra, $ConcetracaoAtivo, $FormCentesimal, $ResponsavelEnvio, $ObsAmostra, $DataCadastro, $IdAmostra));
+
+                                echo "Os dados foram salvos!";
+                                return TRUE;
+                            }
+                        }
+                    ?>
+                
+            </header>
+                    
     </article>
 
     <article id="outros1">
