@@ -392,7 +392,7 @@
 
                         <p><label >Amostra:</label>
                         
-                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="Atr_preencher()"> 
+                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="clicou()"> 
                         <option value="">Selecione uma amostra...</option>
                         <?php 
                             session_start();
@@ -412,7 +412,7 @@
 
                             <label for="Atr_IdAmostra"> ID Amostra:</label><input type="text" name="Atr_IdAmostra" id="Atr_IdAmostra" size="22" maxlength="23" value="" disabled=""/></p>
                             <p><label for="Atr_PrincipioAtivo"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo" id="Atr_PrincipioAtivo" size="70" maxlength="70" disabled=""/>
-                            <label for="LoteProduto"> Lote:</label><input type="text" name="Atr_LoteProduto" id="Atr_LoteProduto" size="27" maxlength="27" disabled=""/>
+                            <label for="Atr_LoteProduto"> Lote:</label><input type="text" name="Atr_LoteProduto" id="Atr_LoteProduto" size="27" maxlength="27" disabled=""/>
                             </p>
                             
                             <p><label for="Atr_dateFrom">Data Fabricação:<input type="date" name="Atr_dateFrom" id="Atr_dateFrom"  disabled="" />
@@ -444,7 +444,7 @@
                             <p id="botoes"><div id="botoes"><input type="submit" id="Atr_Salvar" name="Atr_Salvar"  disabled="" onclick="validar()"/>
                             <input type="reset" name="limpar2" value="Limpar"/></div></p>
                     
-                        <script>
+                        <script type="text/javascript">
                             function selecionado2() {
                                 var x = document.getElementById("Atr_Amostra").value;
                                 document.getElementById("Atr_IdAmostra").value = x;
@@ -455,21 +455,42 @@
                 </form>
 
             <script type="text/javascript">
-                function Atr_preencher(){
-                    document.getElementById('Atr_PrincipioAtivo').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_LoteProduto').value = <?php echo $dados['LoteProduto']; ?>;
-                        document.getElementById('Atr_dateFrom').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_Armazenamento').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_QtdAmostra').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_ConcetracaoAtivo').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_FormCentesimal').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_ResponsavelEnvio').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_ObsAmostra').value = <?php echo $dados['PrincipioAtivo']; ?>;
-                        document.getElementById('Atr_Salvar').value = <?php echo $dados['PrincipioAtivo']; ?>;
+                function clicou(){
+                    alert ("acessou o clicou.")
 
+                    <?php 
+                        
+                        $AmostaSelecionada = 21; //(int)$_POST['Atr_Amostra'];
+                        $sql = "SELECT * FROM amostra WHERE CodAmostra = $AmostaSelecionada";
+                        $query = Mysql::conectar()->prepare($sql);
+                        $query->execute();
+                        foreach($query as $dados){ 
+                    ?>
+                    
+                    document.getElementById('Atr_PrincipioAtivo').value = "<?php echo $dados['PrincipioAtivo'];?>";
+                    document.getElementById('Atr_LoteProduto').value = "<?php echo $dados['LoteProduto'];?>";
+                    document.getElementById('Atr_dateFrom').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_Armazenamento').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_QtdAmostra').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_ConcetracaoAtivo').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_FormCentesimal').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_ResponsavelEnvio').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_ObsAmostra').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+                    document.getElementById('Atr_Salvar').value = "<?php echo $dados['PrincipioAtivo']; ?>";
+
+                    <?php 
+                        }
+                    ?>
+
+
+
+
+
+                    //habilitar2();
                 }
 
                 function habilitar2(){
+                    
                     if(document.getElementById('Atr_Amostra').value == 0){
                         document.getElementById('Atr_PrincipioAtivo').disabled = true;
                         document.getElementById('Atr_LoteProduto').disabled = true;
