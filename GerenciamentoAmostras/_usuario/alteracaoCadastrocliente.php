@@ -57,21 +57,15 @@
                       <nav id="menu-opcoes">
                         <h1>Opcoes</h1>
                         <ul type="1">
-                            <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientes.php#novo" target="janela" alt="especifica��es da tela"/>Novo Cliente</a></li>
-                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracaoCadastroCliente.php#alterar" target="janela" alt="especificações da tela"/>Alterar Cliente</a></li>
+                            <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracaoCadastroCliente.php#alterar_cadastro" target="janela" alt="especificações da tela"/>Alterar cadastro</a></li>
+                            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracaoCadastroCliente.php#alterar" target="janela" alt="especificações da tela"/>outros</a></li>
                             
                         </ul>
-                        <iframe src="_alteracoesamostrascliente.php" name="janela" scrolling="no" id="frame-spec">
+                        <iframe src="_alteracaoCadastroCliente.php" name="janela" scrolling="no" id="frame-spec">
                         </iframe>
                     </nav>
 
                 </header>
-
-                <p>
-                    inserir texto aqui
-                    <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    inserir texto aqui
-                </p>
             </article>
         </section>
 

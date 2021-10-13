@@ -46,6 +46,7 @@
 
 ?>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -107,7 +108,7 @@
             overflow-y: scroll !important;
         }
         article#inicio{
-            padding-left: 90px;
+            padding-left: 50px;
         }
 
     iframe#TabelaTestes::-webkit-scrollba {
@@ -119,6 +120,12 @@
         overflow-x: scroll !important;
         overflow-y: scroll !important;
     }
+    iframe#tabela_exames_cliente {
+        width: 1080px;
+        height: 400px;
+        overflow-x: scroll !important;
+        overflow-y: scroll !important;
+    }
     
     iframe#tabela_metodos::-webkit-scrollba {
     display: yes;
@@ -127,17 +134,18 @@
     </style>
 </head>
 <body>
-    <article id="incio">
+    <article id="inicio">
 
         <header>
        
             <h2>
                 <br> início
-            </h2>        
+            </h2>    
+            <iframe src="_amostras_tabela_cliente.php" name="janela" scrolling="no" id="tabela_exames_cliente">   
+            </iframe>     
         </header>
-        <p>
-            colocar texto aqui
-        </p>        
+        
+
     </article>
 
     <article id="novo">
@@ -176,8 +184,7 @@
                         </p>
                         
                         <p><label for="dateFabricacao">Data Fabricação:<input type="date" name="dateFrom" id="dateFrom"  disabled="" />
-                        <br/>
-
+                        
                         <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="cArmazenamento" id="cArmazenamento" disabled="">
                             <option>selecione...</option>
                             <option>temp. ambiente</option>
