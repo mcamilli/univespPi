@@ -72,6 +72,7 @@ fieldset#usuario {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	font-size: 16pt;
 
 }
 
@@ -90,6 +91,7 @@ input#cLogin {
 	border-radius: 10px;
 	width: 200px;
 	background-color: rgb(217, 226, 228)
+
 }
 
 input#cNome {
@@ -98,12 +100,14 @@ input#cNome {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	border-radius: 5px;
+	font-size: 16pt;
 }
 
 input#cSenha {
 	width: 230px;
 	height: 25px;		
 	border-radius: 5px;
+	font-size: 16pt;
 }
 
 
