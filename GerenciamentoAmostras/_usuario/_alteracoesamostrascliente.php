@@ -161,7 +161,7 @@
 
                     <p><label >Amostra:</label>
                     
-                    <select name="cAmostra" id="cAmostra" style="width:700px" required onchange="selecionado()"> 
+                    <select name="cAmostra" id="cAmostra" style="width:700px" onchange="selecionado()"> 
                     <option value="">Selecione uma amostra...</option>
                     <?php 
                         session_start();
@@ -179,26 +179,26 @@
                    
 
                         <label for="cIdAmostra"> ID Amostra:</label><input type="text" name="cIdAmostra" id="cIdAmostra" size="22" maxlength="23" value="" disabled=""/></p>
-                        <p><label for="cPrincipioAtivo"> Princípio Ativo:</label><input type="text" name="cPrincipioAtivo" id="cPrincipioAtivo" size="70" maxlength="70" placeholder="e.g. cloreto de sódio; polietilenoglicol; 2-mercaptoetanol" required disabled=""/>
-                        <label for="cLoteProduto"> Lote:</label><input type="text" name="cLoteProduto" id="cLoteProduto" size="27" maxlength="27" disabled="" required/>
+                        <p><label for="cPrincipioAtivo"> Princípio Ativo:</label><input type="text" name="cPrincipioAtivo" id="cPrincipioAtivo" size="70" maxlength="70" placeholder="e.g. cloreto de sódio; polietilenoglicol; 2-mercaptoetanol" disabled=""/>
+                        <label for="cLoteProduto"> Lote:</label><input type="text" name="cLoteProduto" id="cLoteProduto" size="27" maxlength="27" disabled=""/>
                         </p>
                         
-                        <p><label for="dateFabricacao">Data Fabricação:<input type="date" name="dateFrom" id="dateFrom"  disabled="" required/>
+                        <p><label for="dateFabricacao">Data Fabricação:<input type="date" name="dateFrom" id="dateFrom"  disabled="" />
                         
-                        <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="cArmazenamento" id="cArmazenamento" disabled="" required>
+                        <label for="tArmazenamento">Temperatura de Armazenamento:</label><select name="cArmazenamento" id="cArmazenamento" disabled="">
                             <option>selecione...</option>
                             <option>temp. ambiente</option>
                             <option>4ºC</option>
                             <option>-20ºC</option>
                             <option>-80ºC</option>
                         </select>
-                        <label for="cQtdAmostra"> Qtd. Amostra:</label><input type="text" name="cQtdAmostra" id="cQtdAmostra" size="28" maxlength="28" placeholder="e.g. 100g, 10 peças (20cm x 20cm)" disabled="" required/>
+                        <label for="cQtdAmostra"> Qtd. Amostra:</label><input type="text" name="cQtdAmostra" id="cQtdAmostra" size="28" maxlength="28" placeholder="e.g. 100g, 10 peças (20cm x 20cm)" disabled=""/>
                         </p>
                         <p>
-                        <label for="cConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="cConcetracaoAtivo" id="cConcetracaoAtivo" size="27" maxlength="27" placeholder="e.g. 10mg/mL, 50ng/mL, 10%" disabled="" required/>
-                        <label for="cFormCentesimal"> Fórmula Centesimal:</label><input type="text" name="cFormCentesimal" id="cFormCentesimal" size="27" maxlength="27" placeholder="e.g. 10 ppm; 25 ppb" disabled="" required/>
+                        <label for="cConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="cConcetracaoAtivo" id="cConcetracaoAtivo" size="27" maxlength="27" placeholder="e.g. 10mg/mL, 50ng/mL, 10%" disabled=""/>
+                        <label for="cFormCentesimal"> Fórmula Centesimal:</label><input type="text" name="cFormCentesimal" id="cFormCentesimal" size="27" maxlength="27" placeholder="e.g. 10 ppm; 25 ppb" disabled=""/>
                         </p>
-                        <p><p><label for="cResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="cResponsavelEnvio" id="cResponsavelEnvio" size="70" maxlength="70" disabled="" required/>
+                        <p><p><label for="cResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="cResponsavelEnvio" id="cResponsavelEnvio" size="70" maxlength="70" disabled=""/>
                         </p>
                         <p>
                         <label for="cMen">Observação:</label>
@@ -294,19 +294,82 @@
                         if(isset($_POST['cResponsavelEnvio'])){$ResponsavelEnvio = $_POST['cResponsavelEnvio'];}
                         if(isset($_POST['cObsAmostra'])){$ObsAmostra = $_POST['cObsAmostra'];}
 
-                        
+                        $texto = "";
+                        if($PrincipioAtivo == "") { 
+                            if($texto == ""){
+                                $texto = "Preencha o campo Princípio ativo";
+                            }else{
+                                $texto = $texto. "; Princípio ativo";
+                            }
+                        }
+                        if($LoteProduto == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Lote do produto";
+                            }else{
+                                $texto = $texto. "; Lote do produto";
+                            }
                             
-                        $query = "UPDATE amostra SET PrincipioAtivo = ?, LoteProduto = ?, DataFabricacao = ?, Armazenamento = ?, 
-                        QtdAmostra = ?, ConcetracaoAtivo = ?, FormCentesimal = ?, ResponsavelEnvio = ?, ObsAmostra = ?, DataCadastro = ?
-                        WHERE CodAmostra = ?";
+                        }
+                        if($DataFabricacao == NULL) {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Data de fabricação";
+                            }else{
+                                $texto = $texto. "; Data de fabricação";
+                            }
+                        }
+                        if($Armazenamento == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Armazenamento";
+                            }else{
+                                $texto = $texto. "; Amarzenamento";
+                            }
+                        }
+                        if($QtdAmostra == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Qtd. de amostra";
+                            }else{
+                                $texto = $texto. "; Qtd. de amostra";
+                            }
+                        }
+                        if($ConcetracaoAtivo == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Concentração princípio ativo";
+                            }else{
+                                $texto = $texto. "; Concentração princípio ativo";
+                            }
+                        }
+                        if($FormCentesimal == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo fórmula centesimal";
+                            }else{
+                                $texto = $texto. "; fórmula centesimal";
+                            }
+                        }
+                        if($ResponsavelEnvio == "") {
+                            if($texto == ""){
+                                $texto = "Preencha o campo Responsável pelo envio";
+                            }else{
+                                $texto = $texto. "; Responsável pelo envio";
+                            }
+                        }
                         
-                        $sql = Mysql::conectar()->prepare($query);
-                        
-                        $sql->execute(array($PrincipioAtivo, $LoteProduto, $DataFabricacao, $Armazenamento, $QtdAmostra, $ConcetracaoAtivo, $FormCentesimal, $ResponsavelEnvio, $ObsAmostra, $DataCadastro, $IdAmostra));
+                        if($texto !=  "")
+                        {   
+                            $texto = $texto. ".";
+                            echo $texto;
+                        }else{
+                            
+                            $query = "UPDATE amostra SET PrincipioAtivo = ?, LoteProduto = ?, DataFabricacao = ?, Armazenamento = ?, 
+                            QtdAmostra = ?, ConcetracaoAtivo = ?, FormCentesimal = ?, ResponsavelEnvio = ?, ObsAmostra = ?, DataCadastro = ?
+                            WHERE CodAmostra = ?";
+                            
+                            $sql = Mysql::conectar()->prepare($query);
+                            
+                            $sql->execute(array($PrincipioAtivo, $LoteProduto, $DataFabricacao, $Armazenamento, $QtdAmostra, $ConcetracaoAtivo, $FormCentesimal, $ResponsavelEnvio, $ObsAmostra, $DataCadastro, $IdAmostra));
 
-                        echo "Os dados foram salvos!";
-                        return TRUE;
-                        
+                            echo "Os dados foram salvos!";
+                            return TRUE;
+                        }
                     }
                 ?>
             
@@ -330,7 +393,7 @@
 
                         <p><label >Amostra:</label>
                         
-                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" required onchange="selecionado2()"> 
+                        <select name="Atr_Amostra" id="Atr_Amostra" style="width:700px" onchange="selecionado2()"> 
                         <option value="">Selecione uma amostra...</option>
                         <?php 
                             session_start();
@@ -348,27 +411,27 @@
                     
 
                             <label for="Atr_IdAmostra"> ID Amostra:</label><input type="text" name="Atr_IdAmostra" id="Atr_IdAmostra" size="22" maxlength="23" value="" disabled=""/></p>
-                            <p><label for="Atr_PrincipioAtivo"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo" id="Atr_PrincipioAtivo" size="70" maxlength="70" disabled="" required/>
-                            <label for="Atr_LoteProduto"> Lote:</label><input type="text" name="Atr_LoteProduto" id="Atr_LoteProduto" size="27" maxlength="27" disabled="" required/>
+                            <p><label for="Atr_PrincipioAtivo"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo" id="Atr_PrincipioAtivo" size="70" maxlength="70" disabled=""/>
+                            <label for="Atr_LoteProduto"> Lote:</label><input type="text" name="Atr_LoteProduto" id="Atr_LoteProduto" size="27" maxlength="27" disabled=""/>
                             </p>
                             
-                            <p><label for="Atr_dateFrom">Data Fabricação:<input type="date" name="Atr_dateFrom" id="Atr_dateFrom"  disabled="" required/>
+                            <p><label for="Atr_dateFrom">Data Fabricação:<input type="date" name="Atr_dateFrom" id="Atr_dateFrom"  disabled="" />
                             
 
-                            <label for="Atr_Armazenamento">Temperatura de Armazenamento:</label><select name="Atr_Armazenamento" id="Atr_Armazenamento" disabled="" required>
+                            <label for="Atr_Armazenamento">Temperatura de Armazenamento:</label><select name="Atr_Armazenamento" id="Atr_Armazenamento" disabled="">
                                 <option>selecione...</option>
                                 <option>temp. ambiente</option>
                                 <option>4ºC</option>
                                 <option>-20ºC</option>
                                 <option>-80ºC</option>
                             </select>
-                            <label for="Atr_QtdAmostra"> Qtd. Amostra:</label><input type="text" name="Atr_QtdAmostra" id="Atr_QtdAmostra" size="28" maxlength="28"  disabled="" required/>
+                            <label for="Atr_QtdAmostra"> Qtd. Amostra:</label><input type="text" name="Atr_QtdAmostra" id="Atr_QtdAmostra" size="28" maxlength="28"  disabled=""/>
                             </p>
                             <p>
-                            <label for="Atr_ConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="Atr_ConcetracaoAtivo" id="Atr_ConcetracaoAtivo" size="27" maxlength="27" disabled="" required/>
-                            <label for="Atr_FormCentesimal"> Fórmula Centesimal:</label><input type="text" name="Atr_FormCentesimal" id="Atr_FormCentesimal" size="27" maxlength="27" disabled="" required/>
+                            <label for="Atr_ConcetracaoAtivo"> Concetração princípio Ativo:</label><input type="text" name="Atr_ConcetracaoAtivo" id="Atr_ConcetracaoAtivo" size="27" maxlength="27" disabled=""/>
+                            <label for="Atr_FormCentesimal"> Fórmula Centesimal:</label><input type="text" name="Atr_FormCentesimal" id="Atr_FormCentesimal" size="27" maxlength="27" disabled=""/>
                             </p>
-                            <p><p><label for="Atr_ResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="Atr_ResponsavelEnvio" id="Atr_ResponsavelEnvio" size="70" maxlength="70" disabled="" required/>
+                            <p><p><label for="Atr_ResponsavelEnvio"> Responável pelo envio:</label><input type="text" name="Atr_ResponsavelEnvio" id="Atr_ResponsavelEnvio" size="70" maxlength="70" disabled=""/>
                             </p>
                             <p>
                             <label for="Atr_Men">Observação:</label>
@@ -505,7 +568,71 @@
                             if(isset($_POST['Atr_ResponsavelEnvio'])){$ResponsavelEnvio = $_POST['Atr_ResponsavelEnvio'];}
                             if(isset($_POST['Atr_ObsAmostra'])){$ObsAmostra = $_POST['Atr_ObsAmostra'];}
 
+                            $texto = "";
+                            if($PrincipioAtivo == "") { 
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Princípio ativo";
+                                }else{
+                                    $texto = $texto. "; Princípio ativo";
+                                }
+                            }
+                            if($LoteProduto == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Lote do produto";
+                                }else{
+                                    $texto = $texto. "; Lote do produto";
+                                }
+                                
+                            }
+                            if($DataFabricacao == NULL) {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Data de fabricação";
+                                }else{
+                                    $texto = $texto. "; Data de fabricação";
+                                }
+                            }
+                            if($Armazenamento == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Armazenamento";
+                                }else{
+                                    $texto = $texto. "; Amarzenamento";
+                                }
+                            }
+                            if($QtdAmostra == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Qtd. de amostra";
+                                }else{
+                                    $texto = $texto. "; Qtd. de amostra";
+                                }
+                            }
+                            if($ConcetracaoAtivo == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Concentração princípio ativo";
+                                }else{
+                                    $texto = $texto. "; Concentração princípio ativo";
+                                }
+                            }
+                            if($FormCentesimal == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo fórmula centesimal";
+                                }else{
+                                    $texto = $texto. "; fórmula centesimal";
+                                }
+                            }
+                            if($ResponsavelEnvio == "") {
+                                if($texto == ""){
+                                    $texto = "Preencha o campo Responsável pelo envio";
+                                }else{
+                                    $texto = $texto. "; Responsável pelo envio";
+                                }
+                            }
                             
+                            if($texto !=  "")
+                            {   
+                                $texto = $texto. ".";
+                                echo $texto;
+                            }else{
+                                
                                 $query = "UPDATE amostra SET PrincipioAtivo = ?, LoteProduto = ?, DataFabricacao = ?, Armazenamento = ?, 
                                 QtdAmostra = ?, ConcetracaoAtivo = ?, FormCentesimal = ?, ResponsavelEnvio = ?, ObsAmostra = ?, DataCadastro = ?
                                 WHERE CodAmostra = ?";
@@ -516,7 +643,7 @@
 
                                 echo "O registro foi alterado com sucesso!";
                                 return TRUE;
-                            
+                            }
                         }
                     ?>
                 

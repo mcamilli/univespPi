@@ -112,14 +112,14 @@
             <fieldset id="alterarexame"> 
                 <legend>Alterar andamento:</legend>     
                 
-                <p><label for="_id_exame"> Insira o ID Exame:</label><input type="text" name="_id_exame" id="_id_exame" size="9" maxlength="9" required/>
+                <p><label for="_id_exame"> Insira o ID Exame:</label><input type="text" name="_id_exame" id="_id_exame" size="9" maxlength="9" />
                 <label for="_pegar_amostra"><input type="submit" id="_pegar_amostra" name="_pegar_amostra" value="Localizar" onclick="Pegar_exame()"/></p>
                 <br>
                 <p><label for="_cliente"> Cliente:</label><input type="text" name="_cliente" id="_cliente" size="80" maxlength="80" disabled/></p>
                 <p><label for="_amostra"> Amostra:</label><input type="text" name="_amostra" id="_amostra" size="79" maxlength="80" disabled/></p>
                 <p><label for="_exame"> Exame:</label><input type="text" name="_exame" id="_exame" size="80" maxlength="80" disabled/></p>
                 <p><label>Situação do exame:</label>
-                <select name="_status" id="_status" style="width:200px" onchange="Status()" disabled required>
+                <select name="_status" id="_status" style="width:200px" onchange="Status()" disabled>
 				<option value="0"></option>
 				
 					<option value="1">Em andamento</option>
