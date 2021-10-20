@@ -127,7 +127,7 @@
 
                     <p><label >Cliente:</label>
                     
-                    <select name="tCliente" id="cCliente" style="width:750px" onchange="selecionado()"> 
+                    <select name="tCliente" id="cCliente" style="width:750px" required onchange="selecionado()"> 
                     <option value=""></option>
                     <?php 
                     
@@ -141,8 +141,8 @@
                     </select>
 
 
-                        <label for="cIdCliente"> ID cliente:</label><input type="text" name="tIdCliente" id="cIdCliente" size="20" maxlength="20"/></p>
-                        <p><label for="cNovaAmostra"> Nova Amostra:</label><input type="text" name="tNovaAmostra" id="cNovaAmostra" size="70" maxlength="70"/></p>
+                        <label for="cIdCliente"> ID cliente:</label><input type="text" name="tIdCliente" id="cIdCliente" size="20" maxlength="20" disabled=""/></p>
+                        <p><label for="cNovaAmostra"> Nova Amostra:</label><input type="text" name="tNovaAmostra" id="cNovaAmostra" size="70" maxlength="70" required/></p>
                         </fieldset>
                         <br>
 
@@ -162,44 +162,15 @@
                 
             <?php
                     if(isset($_POST['tSalvar']) && isset($_POST['form'])== "f_form"){
-                        $Cliente = $_POST['tCliente'];
                         $IdCliente = (int)$_POST['tIdCliente'];
                         $NovaAmostra = $_POST['tNovaAmostra'];
-
-                        $texto = "";
-                        if($Cliente == "") { 
-                            //alert("preencha o campo Nova amostra");
-                            if($texto == ""){
-                                $texto = "Preencha o campo Cliente";
-                            }else{
-                                $texto = $texto. "; Cliente";
-                            }
-                        }
-                        if($IdCliente == "") {
-                            if($texto == ""){
-                                $texto = "Preencha o campo ID Cliente";
-                            }else{
-                                $texto = $texto. "; ID Cliente";
-                            }
-                            
-                        }
-                        if($NovaAmostra == "") {
-                            if($texto == ""){
-                                $texto = "Preencha o campo Nova Amostra";
-                            }else{
-                                $texto = $texto. "; Nova Amostra";
-                            }
-                        }
-                        if($texto !=  "")
-                        {
-                            echo $texto;
-                        }else{
-                            $query = "INSERT INTO amostra  (NomeAmostra, CodCliente) VALUES (?,?)";
-                            $sql = Mysql::conectar()->prepare($query);
-                            $sql->execute(array($NovaAmostra, $IdCliente));
-                            echo "amostra cadastrada";
-                            return TRUE;
-                        }
+                        
+                        $query = "INSERT INTO amostra  (NomeAmostra, CodCliente) VALUES (?,?)";
+                        $sql = Mysql::conectar()->prepare($query);
+                        $sql->execute(array($NovaAmostra, $IdCliente));
+                        echo "amostra cadastrada";
+                        return TRUE;
+                        
                     }
                 ?>
             
@@ -217,7 +188,7 @@
         <form action="" method="POST">  
         <fieldset id="abribuirexame">      
 			<p><label>Nome do Cliente:</label>
-			<select name="id_categoria" id="id_categoria" style="width:750px" onchange="Cliente()">
+			<select name="id_categoria" id="id_categoria" style="width:750px" required onchange="Cliente()">
 				<option value="">Selecione um cliente...</option>
 				<?php
 					$sql = "SELECT CodCliente, RazaoSocial FROM cliente";
@@ -232,13 +203,13 @@
 			
 			<p><label>Nome da Amostra:</label>
 			<span class="carregando">Aguarde, carregando...</span>
-			<select name="id_sub_categoria" id="id_sub_categoria" style="width:740px" onchange="Amostra()">
+			<select name="id_sub_categoria" id="id_sub_categoria" style="width:740px" required onchange="Amostra()">
 				<option value="">Escolha uma amostra...</option>
 			</select>
             <label for="id_amostra"> ID Amostra:</label><input type="text" name="id_amostra" id="id_amostra" size="9" maxlength="9" disabled=""/></p>
 
             <p><label>Exame/Método:</label>
-			<select name="_exame" id="_exame" style="width:750px" onchange="Exame()">
+			<select name="_exame" id="_exame" style="width:750px" required onchange="Exame()">
 				<option value="">Selecione um método...</option>
 				<?php
 					$sql = "SELECT CodMetodo, NomeMet FROM metodo";
@@ -251,11 +222,11 @@
 				</select>
                 <label for="id_exame"> ID cliente:</label><input type="text" name="id_exame" id="id_exame" size="10" maxlength="10" disabled=""/></p>
                 <p>
-                    <label for="NumContrato"> Número Contrato:</label><input type="text" name="NumContrato" id="NumContrato" size="20" maxlength="10"/>
-                    <label for="Concetracao"> Concetração Composto:</label><input type="text" name="Concetracao" id="Concetracao" size="30" maxlength="30"/>
+                    <label for="NumContrato"> Número Contrato:</label><input type="text" name="NumContrato" id="NumContrato" size="20" maxlength="10" required/>
+                    <label for="Concetracao"> Concetração Composto:</label><input type="text" name="Concetracao" id="Concetracao" size="30" maxlength="30" required/>
                 </p>
                 <p>
-                    <label for="TemExposicao"> Tempo de Exposição:</label><input type="text" name="TemExposicao" id="TemExposicao" size="20" maxlength="10"/>
+                    <label for="TemExposicao"> Tempo de Exposição:</label><input type="text" name="TemExposicao" id="TemExposicao" size="20" maxlength="10" required/>
                     <label for="ObsExame">Observação:<textarea type="text" name="ObsExame" id="ObsExame" cols="50" rows="5" maxlength="255" placeholder="Descreva observação se necessário (limite de 255 caracteres)."></textarea>
                 </p>
 	
@@ -304,7 +275,6 @@
         <?php
         // verificar e enviar o exame
         if(isset($_POST['EnviarExame'])){
-            $Texto = "Preencha todos os campos!";
             if(isset($_POST['NumContrato'])){}else{echo $Texto; return; }
             if(isset($_POST['Concetracao'])){}else{echo $Texto; return;}
             if(isset($_POST['TemExposicao'])){}else{echo $Texto; return;}
@@ -325,21 +295,13 @@
             $CodMetodo = (int)$_POST['_exame'];
             //echo (int)$_POST['_exame']. " <br> ";
 
-            $texto = "";
-            if($NumeroContrato == "") {$texto = $Texto;}
-            if($Concentracao == "") {$texto = $Texto;}
-            if($TempoExposicao == "") {$texto = $Texto;}
-            //if($ObsExame == "") {$texto = $Texto;}
-            if($CodAmostra == 0) {$texto = $Texto;}
-            if($CodMetodo == 0) {$texto = $Texto;}
-            if($texto !=  ""){echo $texto;
-            }else{
-                $query = "INSERT INTO exame  (NumeroContrato, Concentracao, TempoExposicao, Observacao, CodAmostra, CodMetodo) VALUES (?, ?, ?, ?, ?, ?)";
-                $sql = Mysql::conectar()->prepare($query);
-                $sql->execute(array($NumeroContrato, $Concentracao, $TempoExposicao, $ObsExame, $CodAmostra,$CodMetodo));
-                echo "Exame criado com sucesso!";
-                return TRUE;
-            }
+            
+            $query = "INSERT INTO exame  (NumeroContrato, Concentracao, TempoExposicao, Observacao, CodAmostra, CodMetodo) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = Mysql::conectar()->prepare($query);
+            $sql->execute(array($NumeroContrato, $Concentracao, $TempoExposicao, $ObsExame, $CodAmostra,$CodMetodo));
+            echo "Exame criado com sucesso!";
+            return TRUE;
+            
         }
         ?>
         </header>
@@ -400,9 +362,9 @@
                 <br>
                 <fieldset id="NovoMetodo">
                     <legend>Cadastro de novo método:</legend>
-                    <p><label for="cMetodo"> Novo método:</label><input type="text" name="tMetodo" id="cMetodo" size="100" maxlength="100"/></p>
+                    <p><label for="cMetodo"> Novo método:</label><input type="text" name="tMetodo" id="cMetodo" size="100" maxlength="100" required/></p>
                     <p><label for="cObsmetodo">Observação:</label>
-                    <textarea type="text" name="tObsmetodo" id="cObsmetodo" cols="80" rows="5" maxlength="255" placeholder="Descreva o método (limite de 255 caracteres)."></textarea></p>
+                    <textarea type="text" name="tObsmetodo" id="cObsmetodo" cols="80" rows="5" maxlength="255" placeholder="Descreva o método (limite de 255 caracteres)." required></textarea></p>
 
                     <p><div><input type="hidden" name="tformMetodo" id="cformMetodo" value="0"/></div>
                     <div id="botoes"><input type="submit" name="fEnviar" value="Salvar"/>
@@ -412,29 +374,9 @@
             </form>	
             <script>
             function EnviarMetodo(){
-                var $mensagem = "";
 
-                if(document.getElementById("cMetodo").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Novo Método";
-                    }else{
-                        $mensagem = $mensagem + ", Novo Método";
-                    }
-                }
-                if(document.getElementById("cObsmetodo").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Observação";
-                    }else{
-                        $mensagem = $mensagem + ", Observação";
-                    }
-                }
-                if($mensagem != ""){
-                    $mensagem = $mensagem + ".";
-                    alert($mensagem);
-                }
-                if($mensagem == ""){
                     document.getElementById("cformMetodo").value = "1";
-                }
+                
    
             }
         </script>

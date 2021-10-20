@@ -95,32 +95,32 @@
             <fieldset id="Cliente">
                 <legend>Novo Cliente</legend>
                 
-                    <p><label for="cRazaoSocial"> Razão Social:</label><input type="text" name="tRazaoSocial" id="cRazaoSocial" size="70" maxlength="100"/>
-                    <label for="cCnpj"> CNPj:</label><input type="text" name="tCnpj" id="cCnpj" size="16" maxlength="16"/></p>
+                    <p><label for="cRazaoSocial"> Razão Social:</label><input type="text" name="tRazaoSocial" id="cRazaoSocial" size="70" maxlength="100" required/>
+                    <label for="cCnpj"> CNPj:</label><input type="text" name="tCnpj" id="cCnpj" size="16" maxlength="16" required/></p>
                     <p><label for="cNomeFantasia"> Nome Fantasia:</label><input type="text" name="tNomeFantasia" id="cNomeFantasia" size="70" maxlength="100"/>
                     </p>
-                    <p><label for="cEmail"> Email:</label><input type="text" name="tEmail" id="cEmail" size="40" maxlength="100" placeholder="Ex. joao.francisco@gmail.com"/>
-                    <label for="cFone1"> Telefone 1:</label><input type="text" name="tFone1" id="cFone1" size="16" maxlength="16"placeholder="Ex. 14 98133-2222"/>
+                    <p><label for="cEmail"> Email:</label><input type="text" name="tEmail" id="cEmail" size="40" maxlength="100" placeholder="Ex. joao.francisco@gmail.com" required/>
+                    <label for="cFone1"> Telefone 1:</label><input type="text" name="tFone1" id="cFone1" size="16" maxlength="16"placeholder="Ex. 14 98133-2222" required/>
                     <label for="cFone2"> Telefone 2:</label><input type="text" name="tFone2" id="cFone2" size="16" maxlength="16" placeholder="Ex. 14 98133-2222"/></p>
                     <p><label for="cObs"> Observação:</label><input type="text" name="tObs" id="cObs" size="100" maxlength="255"/></p>
             </fieldset>
             <br>
             <fieldset id="Endereco">
                 <legend>Endereço</legend>
-                    <p><label for="cLogra"> Logradouro:</label><input type="text" name="tLogra" id="cLogra" size="50" maxlength="100" placeholder="Ex. Rua Manoel da Silva"/>
-                    <label for="cNum"> Número:</label><input type="text" name="tNum" id="cNum" size="7" maxlength="11" placeholder="Ex. 12"/>
-                    <label for="cCep"> CEP:</label><input type="text" name="tCep" id="cCep" size="30" maxlength="40" placeholder="Ex: São Paulo"/></p>
-                    <p><label for="cCidade"> Cidade:</label><input type="text" name="tCidade" id="cCidade" size="30" maxlength="40" placeholder="Ex: São Paulo"/>
-                    <label for="cEstado"> Estado:</label><input type="text" name="tEstado" id="cEstado" size="30" maxlength="40" placeholder="Ex: São Paulo"/>
-                    <label for="cPais"> País:</label><input type="text" name="tPais" id="cPais" size="30" maxlength="40" placeholder="Ex: Brasil"/></P>
+                    <p><label for="cLogra"> Logradouro:</label><input type="text" name="tLogra" id="cLogra" size="50" maxlength="100" placeholder="Ex. Rua Manoel da Silva" required/>
+                    <label for="cNum"> Número:</label><input type="text" name="tNum" id="cNum" size="7" maxlength="11" placeholder="Ex. 12" required/>
+                    <label for="cCep"> CEP:</label><input type="text" name="tCep" id="cCep" size="30" maxlength="40" placeholder="Ex: São Paulo" required/></p>
+                    <p><label for="cCidade"> Cidade:</label><input type="text" name="tCidade" id="cCidade" size="30" maxlength="40" placeholder="Ex: São Paulo" required/>
+                    <label for="cEstado"> Estado:</label><input type="text" name="tEstado" id="cEstado" size="30" maxlength="40" placeholder="Ex: São Paulo" required/>
+                    <label for="cPais"> País:</label><input type="text" name="tPais" id="cPais" size="30" maxlength="40" placeholder="Ex: Brasil" required/></P>
                     </p>
             </fieldset>
             <br>
             <fieldset id="Login">
                 <legend>Login</legend>
-                    <p><label for="cLogin"> Login:</label><input type="text" name="tLogin" id="cLogin" size="30" maxlength="40" placeholder="Ex: thermofisher"/>
-                    <label for="cSenha"> Senha:</label><input type="text" name="tSenha" id="cSenha" size="8" maxlength="8"/>
-                    <label for="cSenhaNovamente"> Repetir:</label><input type="text" name="tSenhaNovamente" id="cSenhaNovamente" size="8" maxlength="8"/></p>
+                    <p><label for="cLogin"> Login:</label><input type="text" name="tLogin" id="cLogin" size="30" maxlength="40" placeholder="Ex: thermofisher" required/>
+                    <label for="cSenha"> Senha:</label><input type="text" name="tSenha" id="cSenha" size="8" maxlength="8" required/>
+                    <label for="cSenhaNovamente"> Repetir:</label><input type="text" name="tSenhaNovamente" id="cSenhaNovamente" size="8" maxlength="8" required/></p>
                     <div id="botoes">Verificar login e senha:<input type="submit" name="verificar" value="Verificar"/></div></p>
                     <p><div><input type="hidden" name="tValidaLogin" id="cValidaLogin" value=false/></div>
             </fieldset>
@@ -133,105 +133,8 @@
         <script>
             function Enviar(){
                 
-                var $mensagem = "";
-                if(document.getElementById("cRazaoSocial").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Razão Social";
-                    }else{
-                        $mensagem = $mensagem + ", Razão Social";
-                    }
-                }
-                if(document.getElementById("cCnpj").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: CNPj";
-                    }else{
-                        $mensagem = $mensagem + ", CNPj";
-                    }
-                }
-                if(document.getElementById("cEmail").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Email";
-                    }else{
-                        $mensagem = $mensagem + ", Email";
-                    }
-                }
-                if(document.getElementById("cFone1").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Telefone 1 ";
-                    }else{
-                        $mensagem = $mensagem + ", Telefone 1";
-                    }
-                }
-                if(document.getElementById("cLogra").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Logradouro";
-                    }else{
-                        $mensagem = $mensagem + ", Logradouro";
-                    }
-                }
-                if(document.getElementById("cNum").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Número";
-                    }else{
-                        $mensagem = $mensagem + ", Número";
-                    }
-                }
-                if(document.getElementById("cCep").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: CEP";
-                    }else{
-                        $mensagem = $mensagem + ", CEP";
-                    }
-                }
-                if(document.getElementById("cCidade").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Cidade";
-                    }else{
-                        $mensagem = $mensagem + ", Cidade";
-                    }
-                }
-                if(document.getElementById("cEstado").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Estado";
-                    }else{
-                        $mensagem = $mensagem + ", Estado";
-                    }
-                }
-                if(document.getElementById("cPais").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: País";
-                    }else{
-                        $mensagem = $mensagem + ", País";
-                    }
-                }
-                if(document.getElementById("cLogin").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Login";
-                    }else{
-                        $mensagem = $mensagem + ", Login";
-                    }
-                }
-                if(document.getElementById("cSenha").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Senha";
-                    }else{
-                        $mensagem = $mensagem + ", Senha";
-                    }
-                }
-                if(document.getElementById("cSenhaNovamente").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Verificação de senha";
-                    }else{
-                        $mensagem = $mensagem + ", Verificação de senha";
-                    }
-                }
-
-                if($mensagem != ""){
-                    $mensagem = $mensagem + ".";
-                    alert($mensagem);
-                }else{
+                
                     document.getElementById("cform").value = "1";
-                }
             }
         </script>
 
