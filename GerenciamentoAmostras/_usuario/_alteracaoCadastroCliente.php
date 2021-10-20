@@ -139,9 +139,9 @@
                      echo $dados['NomeFantasia']; ?>" disabled=""/>
                     </p>
                     <p><label for="AC_Email"> Email:</label><input type="AC_ext" name="AC_Email" id="AC_Email" size="40" maxlength="100" value="<?php 
-                     echo $dados['Email']; ?>" disabled=""/>
+                     echo $dados['Email']; ?>" disabled="" required/>
                     <label for="AC_Fone1"> Telefone 1:</label><input type="AC_ext" name="AC_Fone1" id="AC_Fone1" size="16" maxlength="16" value="<?php 
-                     echo $dados['Telefone1']; ?>" disabled=""/>
+                     echo $dados['Telefone1']; ?>" disabled="" required/>
                     <label for="AC_Fone2"> Telefone 2:</label><input type="AC_ext" name="AC_Fone2" id="AC_Fone2" size="16" maxlength="16" value="<?php 
                      echo $dados['Telefone2']; ?>" disabled=""/></p>
                     
@@ -150,17 +150,17 @@
             <fieldset id="Endereco">
                 <legend>Endereço</legend>
                     <p><label for="AC_Logra"> Logradouro:</label><input type="AC_ext" name="AC_Logra" id="AC_Logra" size="50" maxlength="100" value="<?php 
-                     echo $dados['Endereco']; ?>" disabled=""/>
+                     echo $dados['Endereco']; ?>" disabled="" required/>
                     <label for="AC_Num"> Número:</label><input type="AC_ext" name="AC_Num" id="AC_Num" size="7" maxlength="11" value="<?php 
-                     echo $dados['Numero']; ?>" disabled=""/>
+                     echo $dados['Numero']; ?>" disabled="" required/>
                     <label for="AC_Cep"> CEP:</label><input type="AC_ext" name="AC_Cep" id="AC_Cep" size="30" maxlength="40" value="<?php 
-                     echo $dados['CEP']; ?>" disabled=""/></p>
+                     echo $dados['CEP']; ?>" disabled="" required/></p>
                     <p><label for="AC_Cidade"> Cidade:</label><input type="AC_ext" name="AC_Cidade" id="AC_Cidade" size="30" maxlength="40" value="<?php 
-                     echo $dados['Cidade']; ?>" disabled=""/>
+                     echo $dados['Cidade']; ?>" disabled="" required/>
                     <label for="AC_Estado"> Estado:</label><input type="AC_ext" name="AC_Estado" id="AC_Estado" size="30" maxlength="40" value="<?php 
-                     echo $dados['Estado']; ?>" disabled=""/>
+                     echo $dados['Estado']; ?>" disabled="" required/>
                     <label for="AC_Pais"> País:</label><input type="AC_ext" name="AC_Pais" id="AC_Pais" size="30" maxlength="40" value="<?php 
-                     echo $dados['Pais']; ?>" disabled=""/></P>
+                     echo $dados['Pais']; ?>" disabled="" required/></P>
                     </p>
             </fieldset>
             <?php } ?>
@@ -204,74 +204,13 @@
                     document.getElementById('AC_Estado').disabled = true;
                     document.getElementById('AC_Pais').disabled = true;
                 }
+
             }
             function AC_cliente(){
-                var $mensagem = "";
-
-                if(document.getElementById("AC_Email").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Email";
-                    }else{
-                        $mensagem = $mensagem + ", Email";
-                    }
-                }
-                if(document.getElementById("AC_Fone1").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Telefone 1 ";
-                    }else{
-                        $mensagem = $mensagem + ", Telefone 1";
-                    }
-                }
-                if(document.getElementById("AC_Logra").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Logradouro";
-                    }else{
-                        $mensagem = $mensagem + ", Logradouro";
-                    }
-                }
-                if(document.getElementById("AC_Num").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Número";
-                    }else{
-                        $mensagem = $mensagem + ", Número";
-                    }
-                }
-                if(document.getElementById("AC_Cep").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: CEP";
-                    }else{
-                        $mensagem = $mensagem + ", CEP";
-                    }
-                }
-                if(document.getElementById("AC_Cidade").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Cidade";
-                    }else{
-                        $mensagem = $mensagem + ", Cidade";
-                    }
-                }
-                if(document.getElementById("AC_Estado").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: Estado";
-                    }else{
-                        $mensagem = $mensagem + ", Estado";
-                    }
-                }
-                if(document.getElementById("AC_Pais").value == ""){
-                    if($mensagem == ""){
-                        $mensagem = "Preencha os campos: País";
-                    }else{
-                        $mensagem = $mensagem + ", País";
-                    }
-                }
-
-                if($mensagem != ""){
-                    $mensagem = $mensagem + ".";
-                    alert($mensagem);
-                }else{
+                
                     
-                    alert ("falta insirir o envio para o BD");
-                }
+                alert ("falta insirir o envio para o BD");
+                
             }
         </script>
         </header>
