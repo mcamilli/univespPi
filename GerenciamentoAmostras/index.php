@@ -71,7 +71,7 @@ include('_codigos/mysql.php');
             <form method="post" id="cLogin" name="tLogin">
                 <fieldset id="usuario">
                     <legend>Identificação do Usuário</legend>
-                    </label><input placeholder = "Usuário" type="text" name="tNome" id="cNome" size="30" maxlength="50" Completo" required />
+                    </label><input placeholder = "Usuário" type="text" name="tNome" id="cNome" size="30" maxlength="50" required />
                     </label> <input placeholder= "Senha" type="password" name="tSenha" id="cSenha" size="28" maxlength="8" required />
                     
 
