@@ -221,6 +221,8 @@
                 </fieldset>
             </form>
 
+            
+
         <script type="text/javascript">
             function habilitar(){
                 if(document.getElementById('cAmostra').value == 0){
@@ -308,6 +310,21 @@
                         
                     }
                 ?>
+
+                <form method="POST" id="Imprimir_amostra" name="Imprimir_amostra">
+                    <fieldset id="_Imprimir_amostra">
+                        <legend>Imprimir guia Amostra:</legend>
+                        <p><label for="IdAmostraImprimir"> ID Amostra:</label><input type="text" name="IdAmostraImprimir" id="IdAmostraImprimir" size="22" maxlength="23" value="" required/><input type="submit" id="cImprimir" value="imprimir" name="cImprimir"  onclick="imprimir()"/></p>
+
+                    </fieldset>
+
+                </form>
+
+                <script>
+                    function imprimir(){
+                        alert("deu certo");
+                    }
+                </script>
             
         </header>
 
@@ -518,6 +535,9 @@
                             
                         }
                     ?>
+                
+                                    
+                        
                 
             </header>
                     
