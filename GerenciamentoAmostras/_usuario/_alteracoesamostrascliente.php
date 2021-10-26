@@ -311,21 +311,14 @@
                     }
                 ?>
 
-                <form method="POST" id="Imprimir_amostra" name="Imprimir_amostra">
+                <form method="POST" action="imprimir_amostra.php" target="_blank" id="Imprimir_amostra" name="Imprimir_amostra" >
                     <fieldset id="_Imprimir_amostra">
                         <legend>Imprimir guia Amostra:</legend>
-                        <p><label for="IdAmostraImprimir"> ID Amostra:</label><input type="text" name="IdAmostraImprimir" id="IdAmostraImprimir" size="22" maxlength="23" value="" required/><input type="submit" id="cImprimir" value="imprimir" name="cImprimir"  onclick="imprimir()"/></p>
-
+                        <p><label for="IdAmostraImprimir"> ID Amostra:</label><input type="text" name="IdAmostraImprimir" id="IdAmostraImprimir" size="22" maxlength="23" value="" required/><input type="submit" id="cImprimir" value="imprimir" name="cImprimir"  /></p>
                     </fieldset>
 
                 </form>
-
-                <script>
-                    function imprimir(){
-                        alert("deu certo");
-                    }
-                </script>
-            
+           
         </header>
 
     </article>

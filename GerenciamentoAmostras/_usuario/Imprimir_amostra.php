@@ -10,20 +10,18 @@
     }else{
         header('Location:../_codigos/logout.php');
     }
-
-    function imprimir_amostra($id_amostra){
+        //$id_amostra = 21;
+        $id_amostra = (int)$_POST['IdAmostraImprimir'];
 
         $amostra = $_SESSION["usuario"][0];
 
-        $sql = "SELECT a.CodAmostra, a.NomeAmostra, a.LoteProduto, a.QtdAmostra, a.PrincipioAtivo, a.DataCadastro, a.DataRecebido, c.RazaoSocial FROM amostra a INNER JOIN cliente c ON c.CodCliente = a.CodCliente AND a.CodCliente = ?  ORDER BY 1";
+        $sql = "SELECT a.CodAmostra, a.NomeAmostra, a.LoteProduto, a.QtdAmostra, a.PrincipioAtivo, a.DataCadastro, a.DataFabricacao, a.Armazenamento, a.ConcetracaoAtivo, a.FormCentesimal, a.DataRecebido, a.ResponsavelEnvio, a.ObsAmostra, c.RazaoSocial, c.CodCliente, c.CNPj FROM amostra a INNER JOIN cliente c ON c.CodCliente = a.CodCliente AND a.CodAmostra = ?  ORDER BY 1";
         //$sql = "SELECT * FROM amostra";
         $query = Mysql::conectar()->prepare($sql);
-        $query->execute(array($amostra));
-
-    }
-
+        $query->execute(array($id_amostra));
 
 ?>
+
 
 <!DOCTYPE html>
 <script language="javascript" src="_javascript/funcoes.js"></script>
@@ -37,22 +35,29 @@
     <link rel="stylesheet" type="text/css" href="../_css/andamento.css" />
 </head>
 
+
+
 <body>
+    <?php
+        foreach($query as $dados){      
+    
+    ?>
    <br>
    <br>
    <br>
-   <p>Formuário envio amostra</p>
+   <h2>Envio de amostra</h2>
+   <h1>Formuário</h1>
    <br>
    <br>
    <br>
-   <p>Nome do Cliente: ID cliente: CNPj:</p>
-   
-   <p>Nome da Amostra: ID da amostra: </p>
-   <p>Princípio ativo:  Lote da amostra:</p>
-   <p>Data da fabricação: Temperatura de armazenamento: Qtd de amostra:</p>
-   <p>Concentração princípio ativo: Fórmula Centesimal:</p>
-   <p>Responsável pelo envio:</p>
-   <p>Observação:</p>
+   <p>Nome do Cliente: &nbsp <?php echo $dados["RazaoSocial"]; ?> &nbsp  ID cliente: &nbsp <?php echo $dados["CodCliente"]; ?> &nbsp CNPj: &nbsp <?php echo $dados["CNPj"]; ?> </p>
+
+   <p>Nome da Amostra: &nbsp <?php echo $dados["NomeAmostra"]; ?> &nbsp ID da amostra: &nbsp <?php echo $dados["CodAmostra"]; ?></p>
+   <p>Princípio ativo: &nbsp <?php echo $dados["PrincipioAtivo"]; ?> &nbsp Lote da amostra: &nbsp <?php echo $dados["LoteProduto"]; ?></p>
+   <p>Data da fabricação: &nbsp <?php echo $dados["DataFabricacao"]; ?> &nbsp Temperatura de armazenamento: &nbsp <?php echo $dados["Armazenamento"]; ?> &nbsp Qtd de amostra: &nbsp <?php echo $dados["QtdAmostra"]; ?></p>
+   <p>Concentração princípio ativo: &nbsp <?php echo $dados["ConcetracaoAtivo"]; ?> &nbsp Fórmula Centesimal: &nbsp <?php echo $dados["FormCentesimal"]; ?> </p>
+   <p>Responsável pelo envio: &nbsp <?php echo $dados["ResponsavelEnvio"]; ?></p>
+   <p>Observação: &nbsp <?php echo $dados["ObsAmostra"]; ?></p>
    <br>
    <br>
    <br>
@@ -62,6 +67,8 @@
    <p>Destinatário:</p>
    <p>Colocar aqui o Endereço </p>
 
-
+   <?php
+        }
+   ?>
 </body>
 </html>
