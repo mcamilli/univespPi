@@ -12,13 +12,12 @@
     }
         //$id_amostra = 21;
         $id_amostra = (int)$_POST['IdAmostraImprimir'];
+        $amostra = (int)$_SESSION["usuario"][1];
 
-        $amostra = $_SESSION["usuario"][0];
-
-        $sql = "SELECT a.CodAmostra, a.NomeAmostra, a.LoteProduto, a.QtdAmostra, a.PrincipioAtivo, a.DataCadastro, a.DataFabricacao, a.Armazenamento, a.ConcetracaoAtivo, a.FormCentesimal, a.DataRecebido, a.ResponsavelEnvio, a.ObsAmostra, c.RazaoSocial, c.CodCliente, c.CNPj FROM amostra a INNER JOIN cliente c ON c.CodCliente = a.CodCliente AND a.CodAmostra = ?  ORDER BY 1";
+        $sql = "SELECT a.CodAmostra, a.NomeAmostra, a.LoteProduto, a.QtdAmostra, a.PrincipioAtivo, a.DataCadastro, a.DataFabricacao, a.Armazenamento, a.ConcetracaoAtivo, a.FormCentesimal, a.DataRecebido, a.ResponsavelEnvio, a.ObsAmostra, c.RazaoSocial, c.CodCliente, c.CNPj FROM amostra a INNER JOIN cliente c ON c.CodCliente = a.CodCliente AND a.CodCliente = ? AND a.CodAmostra = ?  ORDER BY 1";
         //$sql = "SELECT * FROM amostra";
         $query = Mysql::conectar()->prepare($sql);
-        $query->execute(array($id_amostra));
+        $query->execute(array($amostra, $id_amostra));
 
 ?>
 
