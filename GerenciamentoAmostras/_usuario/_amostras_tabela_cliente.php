@@ -52,6 +52,29 @@
         article{
             margin-bottom: 5px;
         }
+
+        table{
+            font-size: 13pt;
+        }
+        
+        table#tabela_simples {
+            border-collapse: collapse; /* CSS2 */
+            border: solid black 1px; /* Precedência tem bug no IE */
+        }
+        table#tabela_simples td {
+            border: solid black 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        table#tabela_simples tr#amostras:hover {
+            background: black;
+            color: white;
+            
+        }
+        table tr#primeira_linha{
+            font-weight: bold;
+            
+        }
     </style>
 </head>
 <body>
@@ -66,9 +89,9 @@
             </h2>        
         </header>
 
-        <table border="1">
+        <table id="tabela_simples">
             <br>
-            <tr>
+            <tr id="primeira_linha">
                 <td>ID Amostra</td>
                 <td>Amostra</td>
                 <td>Lote</td>
@@ -76,25 +99,52 @@
                 <td>Princípio Ativo</td>
                 <td>Cadastro</td>
                 <td>Recebido Lab</td>
+        </tr>
                 
-            </tr>
+            
             <?php  
 
             foreach($query as $dados){ 
                    
             ?>
-            <tr>
-                <td><?php echo $dados["CodAmostra"];?></td>
+            <tr id="amostras">
+                <td id="CodAmostra"><?php echo $dados["CodAmostra"];?></td>
                 <td><?php echo $dados["NomeAmostra"];?></td>
                 <td><?php echo $dados["LoteProduto"];?></td>
                 <td><?php echo $dados["QtdAmostra"];?></td>
                 <td><?php echo $dados["PrincipioAtivo"];?></td>
-                <td><?php echo $dados["DataCadastro"];?></td>
-                <td><?php echo $dados["DataRecebido"];?></td>
-                
+                <td id="Datacadastro"><?php if($dados['DataCadastro'] != null){ echo date('d-m-Y', strtotime($dados['DataCadastro']));}?></td>
+                <td><?php if($dados['DataRecebido'] != null){ echo date('d-m-Y', strtotime($dados['DataRecebido']));}?></td>
             </tr>
+
             <?php 
-            } ?>
+
+
+            }
+            echo '<script type="text/javascript"> pintar(); 
+                                
+            function pintar(){
+
+                var oRows = document.getElementById("tabela_simples").getElementsByTagName("tr");
+                var iRowCount = oRows.length;
+
+                
+
+                for(var j = 1; j < iRowCount; j++)
+                {
+                    //alert(oRows[j].cells[0].innerHTML);
+                    if(oRows[j].cells[5].innerHTML == ""){
+                    var tableCells = oRows[j] ;
+                    tableCells.style.backgroundColor = "rgb(144, 238, 144)";
+                    }
+                
+                }
+            }
+            
+            </script>';
+
+            ?>
+            
         </table>
     </article>
 

@@ -121,7 +121,7 @@
         overflow-y: scroll !important;
     }
     iframe#tabela_exames_cliente {
-        width: 1080px;
+        width: 1100px;
         height: 400px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
