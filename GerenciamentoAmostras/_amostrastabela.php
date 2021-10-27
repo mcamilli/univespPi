@@ -52,7 +52,26 @@
         article{
             margin-bottom: 5px;
         }
-        
+        table{
+            font-size: 13pt;
+            border-collapse: collapse; /* CSS2 */
+            border: solid black 1px; /* Precedência tem bug no IE */
+        }
+
+        table td {
+            border: solid black 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        table tr#amostras:hover {
+            background: black;
+            color: white;
+            
+        }
+        table tr#primeira_linha{
+            font-weight: bold;
+            
+        }
     </style>
 </head>
 <body>
@@ -64,10 +83,12 @@
                Amostras cadastradas:
             </h2>        
         </header>
+        <br>
+        <br>
 
-        <table border="1">
+        <table>
         
-            <tr>
+            <tr id="primeira_linha">
                 <td>ID Amostra</td>
                 <td>Amostra</td>
                 <td>Lote</td>
@@ -79,12 +100,13 @@
             foreach($query as $dados){ 
                    
             ?>
-            <tr>
+            <tr id="amostras">
                 <td><?php echo $dados["CodAmostra"];?></td>
                 <td><?php echo $dados["NomeAmostra"];?></td>
                 <td><?php echo $dados["LoteProduto"];?></td>
                 <td><?php echo $dados["PrincipioAtivo"];?></td>
                 <td><?php echo $dados["RazaoSocial"];?></td>
+                
             </tr>
             <?php 
             } ?>

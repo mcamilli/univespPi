@@ -62,8 +62,8 @@
             margin: 0 auto;
         }
         iframe#TabelaClientes {
-            width: 1080px;
-            height: 500px;
+            width: 1300px;
+            height: 600px;
             overflow-x: scroll !important;
             overflow-y: scroll !important;
         }

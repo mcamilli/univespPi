@@ -62,7 +62,7 @@
                             <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostrascliente.php#inicio" target="janela" alt="inicio"/>Amostras</a></li>
                             <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostrascliente.php#novo" target="janela" alt="especificações da tela"/>Cadastrar Amostras</a></li>
                             <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostrascliente.php#alterar" target="janela" alt="especificações da tela"/>Alterar Amostra</a></li>
-                            <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostrascliente.php#outros3" target="janela" alt="especificações da tela"/>outros 3</a></li>
+                            <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_alteracoesamostrascliente.php#Imprimir_remessa" target="janela" alt="especificações da tela"/>Imprimir</a></li>
                         </ul>
                         <iframe src="_alteracoesamostrascliente.php" name="janela" scrolling="no" id="frame-spec">
                         </iframe>

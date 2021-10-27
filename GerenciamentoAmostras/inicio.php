@@ -56,7 +56,7 @@
                 <p>
 
                         inserir texto aqui
-                        colocar tabela com as amostras que est�o em processamento
+                        colocar tabela com as amostras que estão em processamento
                         <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         inserir texto aqui
 

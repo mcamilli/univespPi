@@ -126,6 +126,12 @@
         overflow-x: scroll !important;
         overflow-y: scroll !important;
     }
+    iframe#tabela_exames_cliente {
+        width: 1400px;
+        height: 400px;
+        overflow-x: scroll !important;
+        overflow-y: scroll !important;
+    }
     
     iframe#tabela_metodos::-webkit-scrollba {
     display: yes;
@@ -311,13 +317,7 @@
                     }
                 ?>
 
-                <form method="POST" action="imprimir_amostra.php" target="_blank" id="Imprimir_amostra" name="Imprimir_amostra" >
-                    <fieldset id="_Imprimir_amostra">
-                        <legend>Imprimir guia Amostra:</legend>
-                        <p><label for="IdAmostraImprimir"> ID Amostra:</label><input type="text" name="IdAmostraImprimir" id="IdAmostraImprimir" size="22" maxlength="23" value="" required/><input type="submit" id="cImprimir" value="imprimir" name="cImprimir"  /></p>
-                    </fieldset>
-
-                </form>
+                
            
         </header>
 
@@ -528,10 +528,6 @@
                             
                         }
                     ?>
-                
-                                    
-                        
-                
             </header>
                     
     </article>
@@ -560,26 +556,24 @@
         </p>
     </article>
 
-    <article id="outros2">
+    <article id="Imprimir_remessa">
 
         <header>
-            <h1>Outros 2</h1>
-            <h2>Outros 2 ainda sob desenvolvimento</h2>
+            <h1>Imprimir Formulário</h1>
+            <br>
+            <h2>Imprimir formulário de envio de amostra</h2>
         </header>
-        <p>
-            colocar instruções aqui
-        </p>
-    </article>
+        <br>
+        <br>
+        <br>
+        <form method="POST" action="imprimir_amostra.php" target="_blank" id="Imprimir_amostra" name="Imprimir_amostra" >
+                <fieldset id="_Imprimir_amostra">
+                    <legend>Imprimir guia Amostra:</legend>
+                    <p><label for="IdAmostraImprimir"> ID Amostra:</label><input type="text" name="IdAmostraImprimir" id="IdAmostraImprimir" size="22" maxlength="23" value="" required/><input type="submit" id="cImprimir" value="imprimir" name="cImprimir"  /></p>
+                </fieldset>
 
-    <article id="outros3">
-
-        <header>
-            <h1>Outros 3</h1>
-            <h2>Outros 3 ainda sob desenvolvimento</h2>
-        </header>
-        <p>
-            colocar instruções aqui
-        </p>
+        </form>
+        
     </article>
 </body>
 </html>

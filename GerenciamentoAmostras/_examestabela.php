@@ -51,6 +51,28 @@
         article{
             margin-bottom: 5px;
         }
+        table{
+            font-size: 13pt;
+        }
+        
+        table#tabela_exames {
+            border-collapse: collapse; /* CSS2 */
+            border: solid black 1px; /* Precedência tem bug no IE */
+        }
+        table#tabela_exames td {
+            border: solid black 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        table#tabela_exames tr#amostras:hover {
+            background: black;
+            color: white;
+            
+        }
+        table tr#primeira_linha{
+            font-weight: bold;
+            
+        }
     </style>
 </head>
 <body>
@@ -63,9 +85,11 @@
             </h2>        
         </header>
 
-        <table border="1">
+        <br>
+
+        <table id="tabela_exames">
         
-            <tr>
+            <tr id="primeira_linha">
                 <td>ID Exame</td>
                 <td>Protocolo ISO</td>
                 <td>Contrato</td>
@@ -77,15 +101,37 @@
             foreach($query as $dados){ 
                    
             ?>
-            <tr>
+            <tr id="exames">
                 <td><?php echo $dados["CodExame"];?></td>
                 <td><?php echo $dados["NomeMet"];?></td>
                 <td><?php echo $dados["NumeroContrato"];?></td>
-                <td><?php echo $dados["ExameIniciado"];?></td>
-                <td><?php echo $dados["ExameFinalizado"];?></td>
+                <td id="ExameIniciado"><?php if($dados['ExameIniciado'] != null){ echo date('d-m-Y', strtotime($dados['ExameIniciado']));}?></td>
+                <td><?php if($dados['ExameFinalizado'] != null){ echo date('d-m-Y', strtotime($dados['ExameFinalizado']));}?></td>
             </tr>
+
             <?php 
-            } ?>
+            }
+            echo '<script type="text/javascript"> 
+            destacar(); 
+            function destacar(){
+
+                var oRows = document.getElementById("tabela_exames").getElementsByTagName("tr");
+                var iRowCount = oRows.length;
+                
+                    for(var j = 1; j < iRowCount; j++)
+                    {
+                        if(oRows[j].cells[4].innerHTML == ""){
+                        var tableCells = oRows[j] ;
+                        tableCells.style.backgroundColor = "rgb(144, 238, 144)";
+                        }
+                    }
+                }
+            </script>'
+
+            ?>
+
+
+           
         </table>
     </article>
 

@@ -22,6 +22,18 @@
     <title>Gerenciamento de Amostras</title>
     <link rel="stylesheet" type="text/css" href="_css/estilo.css" />
     <link rel="stylesheet" type="text/css" href="_css/clientes.css" />
+    
+    <style>
+
+        iframe#Tabela_Clientes {
+                width: 1500px;
+                height: 700px;
+                overflow-x: scroll !important;
+                overflow-y: scroll !important;
+                border: none;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -60,7 +72,7 @@
                             <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientes.php#AlterarCliente" target="janela" alt="Alterar registro do cliente"/>Alterar Cliente</a></li>
                             
                         </ul>
-                        <iframe src="_clientes.php" name="janela" scrolling="no" id="frame-spec">
+                        <iframe src="_clientes.php" name="janela" scrolling="no" id="Tabela_Clientes">
                         </iframe>
                     </nav>
 

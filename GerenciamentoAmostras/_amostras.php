@@ -19,6 +19,7 @@
 
 <html>
 <head>
+    
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta charset="utf-8">
@@ -81,10 +82,12 @@
             margin: 0 auto;
         }
         iframe#TabelaTestes {
-            width: 1080px;
+            width: 1300px;
             height: 500px;
             overflow-x: scroll !important;
             overflow-y: scroll !important;
+            border: 1px;
+            overflow: hidden;
         }
         article#inicio{
             padding-left: 90px;
@@ -93,16 +96,18 @@
     iframe#TabelaTestes::-webkit-scrollba {
         display: yes;
     }
-    iframe#tabela_metodos {
-        width: 1080px;
+    iframe#Tabela_exames {
+        width: 1000px;
         height: 200px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
     }
     
+
     iframe#tabela_metodos::-webkit-scrollba {
     display: yes;
     }
+   
 
     </style>
 </head>
@@ -356,6 +361,7 @@
     <article id="NovoMetodo">
     <header>
             <h1>Novo Método</h1>  
+            <br>
             <h2>Cadastro de um novo método de análise:</h2>
 
             <form method="POST" id="fNovoMetodo" name="cNovoMetodo" onsubmit="EnviarMetodo()">
@@ -406,7 +412,7 @@
             ?>
         <br><br>
         <div id=tabela>
-            <iframe id="tabela_metodos" src="_tabela_metodos.php" name="janela" scrolling="yes" id="TabelaTestes" >
+            <iframe src="_tabela_metodos.php" name="janela" scrolling="yes" id="Tabela_exames" >
             </iframe>    
         </div>
         

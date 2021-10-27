@@ -50,6 +50,26 @@
         article{
             margin-bottom: 5px;
         }
+        table{
+            font-size: 13pt;
+            border-collapse: collapse; /* CSS2 */
+            border: solid black 1px; /* Precedência tem bug no IE */
+        }
+
+        table td {
+            border: solid black 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        table tr#linhas:hover {
+            background: black;
+            color: white;
+            
+        }
+        table tr#primeira_linha{
+            font-weight: bold;
+            
+        }
     </style>
 </head>
 <body>
@@ -61,10 +81,11 @@
                Clientes cadastrados:
             </h2>        
         </header>
+        <br>
 
-        <table border="1">
+        <table id="tabela_cliente">
         
-            <tr>
+            <tr id="primeira_linha">
                 <td>ID Cliente</td>
                 <td>Cliente</td>
                 <td>CNPj</td>
@@ -81,12 +102,12 @@
                    
             ?>
 
-            <tr>
+            <tr id="linhas">
                 <td><?php echo $dados["CodCliente"];?></td>
                 <td><?php echo $dados["RazaoSocial"];?></td>
                 <td><?php echo $dados["CNPj"];?></td>
                 <td><?php echo $dados["Usuario"];?></td>
-                <td><?php echo $dados["DataCadastro"];?></td>
+                <td id="Datacadastro"><?php if($dados['DataCadastro'] != null){ echo date('d-m-Y', strtotime($dados['DataCadastro']));}?></td>
                 <td>"nada"</td>
                 <td>"nada"</td>
                 <td>"nada"</td>
