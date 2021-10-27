@@ -118,32 +118,29 @@
             </tr>
 
             <?php 
-
-
             }
-            echo '<script type="text/javascript"> pintar(); 
-                                
-            function pintar(){
+            echo '<script type="text/javascript"> 
+            destacar(); 
+            function destacar(){
 
                 var oRows = document.getElementById("tabela_simples").getElementsByTagName("tr");
                 var iRowCount = oRows.length;
-
                 
-
-                for(var j = 1; j < iRowCount; j++)
-                {
-                    //alert(oRows[j].cells[0].innerHTML);
-                    if(oRows[j].cells[5].innerHTML == ""){
-                    var tableCells = oRows[j] ;
-                    tableCells.style.backgroundColor = "rgb(144, 238, 144)";
+                    for(var j = 1; j < iRowCount; j++)
+                    {
+                        if(oRows[j].cells[5].innerHTML == ""){
+                        var tableCells = oRows[j] ;
+                        tableCells.style.backgroundColor = "rgb(144, 238, 144)";
+                        }
                     }
-                
                 }
-            }
-            
-            </script>';
+            </script>'
 
             ?>
+
+
+
+
             
         </table>
     </article>
