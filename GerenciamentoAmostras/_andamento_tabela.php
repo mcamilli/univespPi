@@ -49,6 +49,26 @@
         article{
             margin-bottom: 5px;
         }
+        table{
+            font-size: 13pt;
+            border-collapse: collapse; /* CSS2 */
+            border: solid black 1px; /* Precedência tem bug no IE */
+        }
+
+        table td {
+            border: solid black 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        table tr#amostras:hover {
+            background: black;
+            color: white;
+            
+        }
+        table tr#primeira_linha{
+            font-weight: bold;
+            
+        }
     </style>
 </head>
 <body>
@@ -61,9 +81,9 @@
             </h2>        
         </header>
 
-        <table border="1">
+        <table>
         
-            <tr>
+            <tr id="primeira_linha">
                 <td>Cliente</td>
                 <td>ID Cliente</td>
                 <td>Amostra</td>
@@ -76,7 +96,7 @@
             foreach($query as $dados){ 
                    
             ?>
-            <tr>
+            <tr id="amostras">
                 <td><?php echo $dados["Cliente"];?></td>
                 <td><?php echo $dados["IdCliente"];?></td>
                 <td><?php echo $dados["Amostra"];?></td>

@@ -19,6 +19,7 @@
     //$sql = "SELECT * FROM amostra";
 	$query = Mysql::conectar()->prepare($sql);
     $query->execute();
+    $count = $query->rowCount();
 
 ?>
 
@@ -81,9 +82,11 @@
        
             <h2>
                Amostras cadastradas:
-            </h2>        
+            </h2>
+            <h3>
+                Total de amostras: <?php echo $count; ?>
+            </h3>        
         </header>
-        <br>
         <br>
 
         <table>

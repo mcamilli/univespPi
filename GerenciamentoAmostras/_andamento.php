@@ -67,7 +67,7 @@
         font-size: 13pt;
     }
     fieldset{
-        font-size: 13pt;
+        font-size: 12pt;
     }
 
     div#botoes{
@@ -83,7 +83,7 @@
         display: yes !important;
     }
     iframe#Andamento_tabela {
-        width: 1180px;
+        width: 1480px;
         height: 200px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
@@ -107,9 +107,12 @@
             <iframe src="_andamento_tabela.php" name="janela" scrolling="yes" id="Andamento_tabela" style="border: 1px solid black;">
             </iframe>
 
+            <br>
+
                 
         <form name="andamento_alterer" action="" method="POST">  
-            <fieldset id="alterarexame"> 
+        <br>    
+        <fieldset id="alterarexame"> 
                 <legend>Alterar andamento:</legend>     
                 
                 <p><label for="_id_exame"> Insira o ID Exame:</label><input type="text" name="_id_exame" id="_id_exame" size="9" maxlength="9" required/>

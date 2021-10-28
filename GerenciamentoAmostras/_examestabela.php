@@ -13,11 +13,16 @@
         header('Location:_codigos/logout.php');
     }
 
-    $sql = "SELECT * FROM exame e JOIN metodo m ON e.CodMetodo = m.CodMetodo  ORDER BY 1";
+    $sql = "SELECT * FROM exame e JOIN metodo m JOIN amostra a ON e.CodMetodo = m.CodMetodo and e.CodAmostra = a.CodAmostra  ORDER BY 1";
 
     //$sql = "SELECT * FROM exame";
 	$query = Mysql::conectar()->prepare($sql);
     $query->execute();
+    $count = $query->rowCount();
+
+    $exame_finalizado = 0;
+    $exame_em_execucao = 0;
+
 
 ?>
 
@@ -52,7 +57,7 @@
             margin-bottom: 5px;
         }
         table{
-            font-size: 13pt;
+            font-size: 12pt;
         }
         
         table#tabela_exames {
@@ -83,7 +88,18 @@
             <h2>
                Exames cadastrados:
             </h2>        
+            <h3>
+                Total de exames: <?php echo $count; ?>. 
+                Concluído: <?php 
+  
+                echo $exame_finalizado;
+
+                ?>.
+                Em andamento: <?php echo $exame_em_execucao; ?>.
+            </h3>
         </header>
+
+        
 
         <br>
 
@@ -93,18 +109,27 @@
                 <td>ID Exame</td>
                 <td>Protocolo ISO</td>
                 <td>Contrato</td>
+                <td>Amostra</td>
                 <td>Início</td>
                 <td>Fim</td>
             </tr>
             <?php  
 
             foreach($query as $dados){ 
+
+                if($dados['ExameFinalizado'] != null){
+                    $exame_finalizado = $exame_finalizado + 1;
+                }
+                if($dados['ExameIniciado'] != null){
+                    $exame_em_execucao = $exame_em_execucao + 1;
+                }
                    
             ?>
             <tr id="exames">
                 <td><?php echo $dados["CodExame"];?></td>
                 <td><?php echo $dados["NomeMet"];?></td>
                 <td><?php echo $dados["NumeroContrato"];?></td>
+                <td><?php echo $dados["NomeAmostra"];?></td>
                 <td id="ExameIniciado"><?php if($dados['ExameIniciado'] != null){ echo date('d-m-Y', strtotime($dados['ExameIniciado']));}?></td>
                 <td><?php if($dados['ExameFinalizado'] != null){ echo date('d-m-Y', strtotime($dados['ExameFinalizado']));}?></td>
             </tr>
@@ -126,8 +151,11 @@
                         }
                     }
                 }
-            </script>'
-
+                contaval();
+                function contaval(){
+                    alert("teste deu certo");
+                }
+            </script>';
             ?>
 
 
