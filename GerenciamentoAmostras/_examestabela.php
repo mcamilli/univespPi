@@ -150,11 +150,11 @@
                         tableCells.style.backgroundColor = "rgb(144, 238, 144)";
                         }
                     }
-                }
                 contaval();
-                function contaval(){
-                    alert("teste deu certo");
-                }
+            }
+            function contaval(){
+                alert("teste deu certo");
+            }
             </script>';
             ?>
 
