@@ -66,6 +66,10 @@
             width: 300px;
             margin: 0 auto;
         }
+        div#botoes_atualizar{
+            width: 300px;
+            margin: 0 auto;
+        }
         iframe#TabelaTestes {
             width: 1080px;
             height: 500px;
@@ -166,8 +170,8 @@
             <?php } ?>
             <br>
             
-            <p><div><input type="hidden" name="form" value="f_form"/></div>
-            <div id="botoes">
+            <p><div><input type="hidden" name="botoes_atualizar" value="n"/></div>
+            <div id="botoes_atualizar">
             <input type="button" id="Atr_editar" name="Atr_editar" value="Editar" onclick="habilitar3()"/>
             <input type="submit" name="AC_Salvar" id="AC_Salvar" value="Salvar" disabled=""/>
             </div></p>
@@ -208,11 +212,48 @@
             }
             function AC_cliente(){
                 
-                    
-                alert ("falta insirir o envio para o BD");
-                
+                document.getElementById('botoes_atualizar').value = "y";
             }
-        </script>
+
+         </script>
+
+                <?php
+                if (isset($_POST['botoes_atualizar']) == "y"){
+
+                    $AC_NomeFantasia = "";
+                    $AC_Email = "";
+                    $AC_Fone1 = "";
+                    $AC_Fone2 = "";
+                    $AC_Logra = "";
+                    $AC_Num = "";
+                    $AC_Cep = "";
+                    $AC_Cidade = "";
+                    $AC_Estado = "";
+                    $AC_Pais = "";
+                    $ID = (int)$_SESSION["usuario"][1];
+
+                    if(isset($_POST['AC_NomeFantasia'])){$AC_NomeFantasia = $_POST['AC_NomeFantasia'];}
+                    if(isset($_POST['AC_Email'])){$AC_Email = $_POST['AC_Email'];}
+                    if(isset($_POST['AC_Fone1'])){$AC_Fone1 = $_POST['AC_Fone1'];}
+                    if(isset($_POST['AC_Fone2'])){$AC_Fone2 = $_POST['AC_Fone2'];}
+                    if(isset($_POST['AC_Logra'])){$AC_Logra = $_POST['AC_Logra'];}
+                    if(isset($_POST['AC_Num'])){$AC_Num = $_POST['AC_Num'];}
+                    if(isset($_POST['AC_Cep'])){$AC_Cep = $_POST['AC_Cep'];}
+                    if(isset($_POST['AC_Cidade'])){$AC_Cidade = $_POST['AC_Cidade'];}
+                    if(isset($_POST['AC_Estado'])){$AC_Estado = $_POST['AC_Estado'];}
+                    if(isset($_POST['AC_Pais'])){$AC_Pais = $_POST['AC_Pais'];}
+
+
+                $query = "UPDATE cliente SET NomeFantasia=?, Email=?, Telefone1=?, Telefone2=?, Endereco=?, Numero=?, CEP=?, Cidade=?, Estado=?, 	Pais=? WHERE CodCliente=?";
+
+                $sql = Mysql::conectar()->prepare($query);
+                $sql->execute(array($AC_NomeFantasia, $AC_Email, $AC_Fone1, $AC_Fone2, $AC_Logra, $AC_Num, $AC_Cep, $AC_Cidade, $AC_Estado, $AC_Pais, $ID));
+
+               
+                echo "Registro alterado";
+                }
+                ?>
+
         </header>
     </article>
 </body>
