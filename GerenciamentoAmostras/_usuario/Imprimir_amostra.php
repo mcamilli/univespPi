@@ -39,163 +39,56 @@ div#interface{
 	padding: 10px 10px 10px 10px;
 }
 
+div#pagina {
+    padding: 40px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 600px;
+}
+
+div#pagina p{
+	text-align: justify;
+	/*text-indent: 50px;*/
+	margin-bottom: 10px;
+}
 
 p {
 	text-align: justify;
-	text-indent: 50px;
+	/*text-indent: 50px;*/
+	margin: 0px;
 }
 a{
 	color: #606060;
 	text-decoration: none;
 }
-a:hover{
-	text-decoration: underline;
-}
 
-header#cabecalho{
-	height: 70px;
-}
-header#cabecalho h1 {
-	font-family: 'Titillium Web', sans-serif;
-	font-size: 20pt;
-	color: #606060;
-	text-shadow: 1px 1px 1px rgba(0,0,0,.6);
-	padding: 0px;
-	margin-bottom: 0px;
-}
-header#cabecalho h2{
-	font-family: 'Titillium Web', sans-serif;
-	color: #888888;
-	font-size: 15pt;
-	padding: 0px;
-	margin-top: 0px;
-	font-family: 'Titillium Web', sans-serif;
-}
-
-/* formatação de imagens com legenda */
-
-figure.foto-legenda{
-	position: relative;
-	border: 8px solid white;
-	box-shadow: 1px 1px 4px black;
+div#envio {
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+	width: 600px;
+	border-top: 1px solid black;
 	
 }
 
 
-/* formatação do menu*/
-nav#menu{
-display: block; 
-}
-
-nav#menu ul{
-	list-style: none;
-	text-transform: uppercase;
-	position: absolute;
-	top: -20px;
-	left: 650px;
-}
-
-nav#menu li{
-	display: inline-block;
-	background-color: #dddddd;
-	padding: 10px;
-	margin: 2px;
-	transition: background-color;
-	
-}
-nav#menu li:hover {
-	background-color: #606060;
-}
-nav#menu h1{
-	display: none;
-}
-
-nav#menu a{
-	color: #000000;
-	text-decoration: none;
-	
-}
-nav#menu a:hover{
-color: #ffffff;
-
-}
-
-section#corpo{
-display:block;
-width: 500px;
-float: left;
-border-right: 1px solid #606060;
-padding-right: 15px;
-}
-article#Principal h2 {
-	font-size: 13pt;
-	color: #606060;
-	background-color: #dddddd;
-	padding: 5px 0px 5px 10px;
-	margin: 10px 0px 10px 0px;
-}
-
-header#menu-interno h3 {
-	border-bottom: 1px #606060 solid;
-	border-top: 1px #606060 solid;
-	height: 25px;
-	font-size: 16px;
-	color: #606060;
-	padding: 6px 0px 0px 10px;
-	vertical-align: middle;
-	text-align:left;
-}
-
-footer#rodape{
-	clear: both;
-	border-top: 1px solid #606060;
-}
-
-footer#rodape p{
+div#cabecalho{
+	padding-top: 20px;
+	padding-bottom: 5px;
+	margin-left: 40px;
+	margin-right: 40px;
+	width: 600px;
+	border: 1px solid black;
 	text-align: center;
 }
-footer {
-	height: 50px;
+
+div#cabecalho h2{
+	font-size: 20pt;
+	padding: 0px;
+	margin-top: 0px;
 }
 
-/* formatação do menu opções*/
-nav#menu-opcoes {
-	display: block;
-}
-
-	nav#menu-opcoes ul {
-		list-style: none;
-		text-transform: uppercase;
-		position: absolute;
-		top: 90px;
-		left: 550px;
-	}
-
-	nav#menu-opcoes li {
-		display: inline-block;
-		background-color: #707070;
-		padding: 2px;
-		color: white;
-		margin: 1px;
-		transition: background-color;
-	}
-
-nav#menu li:hover {
-	background-color: #606060;
-}
-
-nav#menu-opcoes h1 {
-	display: none;
-}
-
-nav#menu-opcoes a {
-	color: white;
-	text-decoration: none;
-}
-
-nav#menu-opcoes a:hover {
-	color: black;
-}
 
 </style>
 
@@ -227,29 +120,50 @@ nav#menu-opcoes a:hover {
    <br>
    <br>
    <br>
-   <h2>Envio de amostra</h2>
-   <h1>Formuário</h1>
-   <br>
-   <br>
-   <br>
-   <p>Nome do Cliente: &nbsp <?php echo $dados["RazaoSocial"]; ?> &nbsp  ID cliente: &nbsp <?php echo $dados["CodCliente"]; ?> &nbsp CNPj: &nbsp <?php echo $dados["CNPj"]; ?> </p>
+   <div id="cabecalho">
+   <h2>Guia de envio de amostra</h2>
 
-   <p>Nome da Amostra: &nbsp <?php echo $dados["NomeAmostra"]; ?> &nbsp ID da amostra: &nbsp <?php echo $dados["CodAmostra"]; ?></p>
-   <p>Princípio ativo: &nbsp <?php echo $dados["PrincipioAtivo"]; ?> &nbsp Lote da amostra: &nbsp <?php echo $dados["LoteProduto"]; ?></p>
-   <p>Data da fabricação: &nbsp <?php echo $dados["DataFabricacao"]; ?> &nbsp Temperatura de armazenamento: &nbsp <?php echo $dados["Armazenamento"]; ?> &nbsp Qtd de amostra: &nbsp <?php echo $dados["QtdAmostra"]; ?></p>
-   <p>Concentração princípio ativo: &nbsp <?php echo $dados["ConcetracaoAtivo"]; ?> &nbsp Fórmula Centesimal: &nbsp <?php echo $dados["FormCentesimal"]; ?> </p>
-   <p>Responsável pelo envio: &nbsp <?php echo $dados["ResponsavelEnvio"]; ?></p>
-   <p>Observação: &nbsp <?php echo $dados["ObsAmostra"]; ?></p>
+	</div>
+	<br>
+   <br>
+   <br>
+   
+   <div id="pagina">
+   <p><b>Nome do Cliente:</b> &nbsp <?php echo $dados["RazaoSocial"]; ?> &nbsp  <b>ID cliente:</b> &nbsp <?php echo $dados["CodCliente"]; ?> </p>
+   <p> <b>CNPj:</b> &nbsp <?php echo $dados["CNPj"]; ?> </p>
+
+   <p><b>Nome da Amostra:</b> &nbsp <?php echo $dados["NomeAmostra"]; ?> &nbsp <b>ID da amostra:</b> &nbsp <?php echo $dados["CodAmostra"]; ?></p>
+   <p><b>Princípio ativo:</b> &nbsp <?php echo $dados["PrincipioAtivo"]; ?> &nbsp <b>Lote da amostra:</b> &nbsp <?php echo $dados["LoteProduto"]; ?></p>
+   <p><b>Data da fabricação:</b> &nbsp <?php echo $dados["DataFabricacao"]; ?> &nbsp <b>Temperatura de armazenamento:</b> &nbsp <?php echo $dados["Armazenamento"]; ?> </p>
+	<p><b>Qtd de amostra:</b> &nbsp <?php echo $dados["QtdAmostra"]; ?></p>
+   <p><b>Concentração princípio ativo:</b> &nbsp <?php echo $dados["ConcetracaoAtivo"]; ?> &nbsp <b>Fórmula Centesimal:</b> &nbsp <?php echo $dados["FormCentesimal"]; ?> </p>
+   <p><b>Responsável pelo envio:</b> &nbsp <?php echo $dados["ResponsavelEnvio"]; ?></p>
+   <p><b>Observação: </b>&nbsp <?php echo $dados["ObsAmostra"]; ?></p>
+   </div>
    <br>
    <br>
    <br>
-   <p>Endereço para envio:</p>
    <br>
    <br>
-   <p>Destinatário:</p>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+   <div id="envio">
+   <p><b>Endereço para envio:</b></p>
+   <br>
+   
+   <p><b>Destinatário:</b></p>
    <p>Laboratório de Biologia Molecular</p>
    <p>Rua Manoel da Silva, n. 61</p>
    <p>Botucatu - SP, CEP 18600-00</p>
+   </div>
 
    <?php
         }
