@@ -106,7 +106,7 @@
             </h2>        
         </header>
         <p>
-            colocar texto aqui
+            
         </p>        
     </article>
     
