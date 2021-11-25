@@ -90,12 +90,7 @@
             </h2>        
             <h3>
                 Total de exames: <?php echo $count; ?>. 
-                Concluído: <?php 
-  
-                echo $exame_finalizado;
-
-                ?>.
-                Em andamento: <?php echo $exame_em_execucao; ?>.
+                
             </h3>
         </header>
 
@@ -153,7 +148,6 @@
                 contaval();
             }
             function contaval(){
-                alert("teste deu certo");
             }
             </script>';
             ?>

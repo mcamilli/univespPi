@@ -9,6 +9,7 @@
 body{
 	font-family: Arial, sens-serif;
 	background-color: white;
+	font-size: 16pt;
 	}
 
 div#interface {
@@ -21,6 +22,7 @@ div#interface {
 p{
 	text-align: justify;
 	text-indent: 50px;
+	
 }
 a{
 	color: #606060;
@@ -41,14 +43,19 @@ header#cabecalho h1 {
 	padding: 0px;
 	padding-top: 110px;
 	margin-bottom: 0px;
+	padding-top: 100px;
+	width: 400px;
 	text-align: center;
+	padding-left: 33%;
+	
 }
 
 div#FormLogin {
-	padding-top: 100px;
+	padding-top: 90px;
 	width: 400px;
 	position: relative;
 	padding-left: 33%;
+	font-size: 16pt;
 }
 
 div#RecuperarAdmin {

@@ -55,8 +55,7 @@
 
                 <p>
 
-                        inserir texto aqui
-                        colocar tabela com as amostras que estão em processamento
+                        
                         <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
                 </p>
