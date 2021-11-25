@@ -14,7 +14,7 @@ body{
 
 div#interface {
 	width: 90%;
-	height: 600px;
+	height: 650px;
 	margin: -20px auto 0px auto;
 	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
 	padding: 10px 10px 10px 10px;
@@ -84,6 +84,7 @@ footer#rodape {
 
 footer#rodape p{
 	text-align: center;
+	position: relative;
 }
 footer {
 	height: 50px;
