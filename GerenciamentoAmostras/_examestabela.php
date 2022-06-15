@@ -58,6 +58,7 @@
         }
         table{
             font-size: 12pt;
+            width: 92%;
         }
         
         table#tabela_exames {

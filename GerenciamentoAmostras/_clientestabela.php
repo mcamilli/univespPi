@@ -52,6 +52,7 @@
         }
         table{
             font-size: 13pt;
+            width: 84%;
             border-collapse: collapse; /* CSS2 */
             border: solid black 1px; /* Precedência tem bug no IE */
         }

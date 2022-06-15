@@ -57,6 +57,7 @@
         }
         article{
             margin-bottom: 800px;
+            width: 84%;
         }
         img.img-direita{
             display: block;
@@ -132,7 +133,7 @@
 
                     <p><label >Cliente:</label>
                     
-                    <select name="tCliente" id="cCliente" style="width:750px" required onchange="selecionado()"> 
+                    <select name="tCliente" id="cCliente" style="width:700px" required onchange="selecionado()"> 
                     <option value=""></option>
                     <?php 
                     
@@ -193,7 +194,7 @@
         <form action="" method="POST">  
         <fieldset id="abribuirexame">      
 			<p><label>Nome do Cliente:</label>
-			<select name="id_categoria" id="id_categoria" style="width:750px" required onchange="Cliente()">
+			<select name="id_categoria" id="id_categoria" style="width:700px" required onchange="Cliente()">
 				<option value="">Selecione um cliente...</option>
 				<?php
 					$sql = "SELECT CodCliente, RazaoSocial FROM cliente";
@@ -208,7 +209,7 @@
 			
 			<p><label>Nome da Amostra:</label>
 			<span class="carregando">Aguarde, carregando...</span>
-			<select name="id_sub_categoria" id="id_sub_categoria" style="width:740px" required onchange="Amostra()">
+			<select name="id_sub_categoria" id="id_sub_categoria" style="width:700px" required onchange="Amostra()">
 				<option value="">Escolha uma amostra...</option>
 			</select>
             <label for="id_amostra"> ID Amostra:</label><input type="text" name="id_amostra" id="id_amostra" size="9" maxlength="9" disabled=""/></p>
@@ -328,7 +329,7 @@
             <form action="" method="POST">  
         <fieldset id="_AlterarAmostra">      
 			<p><label>Nome do Cliente:</label>
-			<select name="id_categoria_2" id="id_categoria_2" style="width:750px" required onchange="Cliente2()">
+			<select name="id_categoria_2" id="id_categoria_2" style="width:700px" required onchange="Cliente2()">
 				<option value="">Selecione um cliente...</option>
 				<?php
 					$sql = "SELECT CodCliente, RazaoSocial FROM cliente";
@@ -343,13 +344,13 @@
 			
 			<p><label>Nome da Amostra:</label>
 			<span class="carregando">Aguarde, carregando...</span>
-			<select name="id_sub_categoria_2" id="id_sub_categoria_2" style="width:740px" required onchange="Amostra2()">
+			<select name="id_sub_categoria_2" id="id_sub_categoria_2" style="width:700px" required onchange="Amostra2()">
 				<option value="">Escolha uma amostra...</option>
 			</select>
             <label for="id_amostra_2"> ID Amostra:</label><input type="text" name="id_amostra_2" id="id_amostra_2" size="9" maxlength="9" disabled=""/></p>
 
             
-                <p><label for="Atr_PrincipioAtivo_2"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo_2" id="Atr_PrincipioAtivo_2" size="70" maxlength="70" disabled="" required/>
+                <p><label for="Atr_PrincipioAtivo_2"> Princípio Ativo:</label><input type="text" name="Atr_PrincipioAtivo_2" id="Atr_PrincipioAtivo_2" size="60" maxlength="60" disabled="" required/>
                             <label for="Atr_LoteProduto_2"> Lote:</label><input type="text" name="Atr_LoteProduto_2" id="Atr_LoteProduto_2" size="27" maxlength="27" disabled="" required/>
                             </p>
                             
