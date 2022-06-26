@@ -23,6 +23,9 @@
     <title>Gerenciamento de Amostras</title>
     <link rel="stylesheet" type="text/css" href="../_css/estilo.css" />
     <link rel="stylesheet" type="text/css" href="../_css/andamento.css" />
+    <style>
+
+    </style>
 </head>
 
 <body>

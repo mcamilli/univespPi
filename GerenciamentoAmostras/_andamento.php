@@ -12,9 +12,7 @@
         header('Location:_codigos/logout.php');
     }
 ?>
-<script>
-    window.scrollTo(0, 0);
-</script>
+
 
 <!DOCTYPE html>
 
@@ -248,8 +246,6 @@
         <!--</header>-->
     </article>
 
-    <script>
-    window.scrollTo(0, 0);
-    </script>
+
  </body>
 </html>

@@ -43,6 +43,7 @@
             background-color: rgba(0,0,0,.3);
             padding:5px;
             margin: 0px;
+            
         }
         article h2 {
             font-size: 13pt;
@@ -55,11 +56,13 @@
 
         table{
             font-size: 13pt;
+            width: 81%;
         }
         
         table#tabela_simples {
             border-collapse: collapse; /* CSS2 */
             border: solid black 1px; /* Precedência tem bug no IE */
+            width: 75%;
         }
         table#tabela_simples td {
             border: solid black 1px;
@@ -74,6 +77,12 @@
         table tr#primeira_linha{
             font-weight: bold;
             
+        }
+        iframe {
+            width: 75%;
+            height: 600px;
+            overflow-x: scroll !important;
+            overflow-y: scroll !important;
         }
     </style>
 </head>

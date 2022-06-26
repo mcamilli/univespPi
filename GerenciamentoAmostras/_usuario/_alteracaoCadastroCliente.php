@@ -34,6 +34,7 @@
             background-color: rgba(0,0,0,.3);
             padding:5px;
             margin: 0px;
+            width: 79%;
         }
         article h2 {
             font-size: 13pt;
@@ -93,6 +94,12 @@
     iframe#tabela_metodos::-webkit-scrollba {
     display: yes;
     }
+    form{
+            font-size: 13pt;
+            width: 79%;
+            height: 600px;
+
+        }
 
     </style>
 </head>

@@ -69,6 +69,7 @@
             background-color: rgba(0,0,0,.3);
             padding:5px;
             margin: 0px;
+            width: 79%;
         }
         article h2 {
             font-size: 13pt;
@@ -102,7 +103,7 @@
             margin: 0 auto;
         }
         iframe#TabelaTestes {
-            width: 1080px;
+            width: 80%;
             height: 500px;
             overflow-x: scroll !important;
             overflow-y: scroll !important;
@@ -115,19 +116,19 @@
         display: yes;
     }
     iframe#tabela_metodos {
-        width: 1080px;
+        width: 75%;
         height: 200px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
     }
     iframe#tabela_exames_cliente {
-        width: 1100px;
+        width: 75%;
         height: 400px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
     }
     iframe#tabela_exames_cliente {
-        width: 1400px;
+        width: 75%;
         height: 400px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;
@@ -136,6 +137,12 @@
     iframe#tabela_metodos::-webkit-scrollba {
     display: yes;
     }
+    form{
+            font-size: 13pt;
+            width: 80%;
+            height: 600px;
+
+        }
 
     </style>
 </head>
