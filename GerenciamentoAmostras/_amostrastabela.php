@@ -66,13 +66,6 @@
             padding-right: 5px;
            
         }
-       /* td:first-child { width: 100px;}
-        td:first-child + td {  width: 250px }
-
-        td:first-child + td + td {  width: 100px }
-        td:first-child + td + td + td {  width: 130px }
-        td:first-child + td + td + td + td {  width: 450px }
-        */
 
         table tr#amostras:hover {
             background: black;
@@ -83,35 +76,6 @@
             font-weight: bold;
             
         }
-/*
-        table#amostras {
-        list-style: none;
-        text-transform: uppercase;
-        position: absolute;
-        top: 100px;
-        left: 1px; 
-        }
-
-        td {
-        border: 1px solid black;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        }
-*/
-       /* nav#menu li{
-            display: inline-block;
-            background-color: #dddddd;
-            padding: 10px;
-            margin: 2px;
-            transition: background-color;
-            
-        }
-        nav#menu li:hover {
-            background-color: #606060;
-        }
-        nav#menu h1{
-            display: none;
-        }*/
 
         
     </style>

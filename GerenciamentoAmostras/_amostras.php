@@ -94,6 +94,13 @@
             padding-left: 90px;
         }
 
+        iframe#frame-spec{
+            width: 1400px;
+            height: 700px;
+            border: 1px;
+            overflow: hidden;
+        }
+
     iframe#TabelaTestes::-webkit-scrollba {
         display: yes;
     }
@@ -318,7 +325,7 @@
         <header>
 
             <h1>
-                <br>
+             
                 Alterar Amostra
             </h1>        
             <h2>
@@ -511,10 +518,13 @@
 
     
     <article id="Exames">
+    <header>
+    <h1>Exames</h1> 
         <div id=tabela>
             <iframe src="_examestabela.php" name="janela" scrolling="yes" id="TabelaTestes" >
             </iframe>    
         </div>
+    </header>
     </article>
 
     <article id="NovoMetodo">

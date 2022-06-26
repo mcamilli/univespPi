@@ -6,10 +6,20 @@ section#conteudo{
 
 }
 iframe#frame-spec{
-    width: 1500px;
+    width: 1400px;
     height: 700px;
     border: 1px;
     overflow: hidden;
+}
+
+
+
+ul#album-fotos {
+    /*  width: 700px;
+    margin: 0 auto;
+    padding: 50px;
+    overflow: hidden;*/
+    list-style: none;
 }
 
 

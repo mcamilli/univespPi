@@ -46,6 +46,7 @@
         background-color: rgba(0,0,0,.3);
         padding:5px;
         margin: 0px;
+        width: 94%;
     }
     article h2 {
         font-size: 13pt;
@@ -53,11 +54,13 @@
         margin: 0px;
     }
     article{
-        margin-bottom: 800px;
+            margin-bottom: 800px;
+            width: 84%;
     }
 
     form{
         font-size: 13pt;
+        width: 94%;
     }
 
     input{
@@ -83,7 +86,7 @@
         display: yes !important;
     }
     iframe#Andamento_tabela {
-        width: 1480px;
+        width: 95%;
         height: 200px;
         overflow-x: scroll !important;
         overflow-y: scroll !important;

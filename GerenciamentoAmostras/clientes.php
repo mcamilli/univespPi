@@ -27,7 +27,7 @@
 
         iframe#Tabela_Clientes {
                 width: 1500px;
-                height: 700px;
+                height: 750px;
                 overflow-x: scroll !important;
                 overflow-y: scroll !important;
                 border: none;
@@ -65,7 +65,7 @@
                         <h3> > &nbsp; Clientes</h3>
                     </hgroup>
 
-                      <nav id="menu-opcoes">
+                     <nav id="menu-opcoes">
                         <h1>Opcoes</h1>
                         <ul type="1">
                             <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="_clientes.php#NovoCliente" target="janela" alt="Cadastrar um novo cliente"/>Novo Cliente</a></li>
@@ -74,7 +74,7 @@
                         </ul>
                         <iframe src="_clientes.php" name="janela" scrolling="no" id="Tabela_Clientes">
                         </iframe>
-                    </nav>
+                     </nav>
 
                 </header>
 

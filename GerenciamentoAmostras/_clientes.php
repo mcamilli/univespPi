@@ -34,6 +34,7 @@
             background-color: rgba(0,0,0,.3);
             padding:5px;
             margin: 0px;
+            width: 84%;
         }
         article h2 {
             font-size: 13pt;
@@ -42,11 +43,19 @@
         }
         article{
             margin-bottom: 800px;
+            width: 94%;
         }
+
         img.img-direita{
             display: block;
             float: right;
             margin-left: 5px;
+        }
+        form{
+            font-size: 13pt;
+            width: 84%;
+            height: 600px;
+
         }
         fieldset{
             font-size: 13pt;
@@ -61,8 +70,9 @@
             width: 300px;
             margin: 0 auto;
         }
+        
         iframe#TabelaClientes {
-            width: 1300px;
+            width: 75%;
             height: 600px;
             overflow-x: scroll !important;
             overflow-y: scroll !important;
