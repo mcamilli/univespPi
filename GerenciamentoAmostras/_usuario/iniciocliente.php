@@ -59,7 +59,11 @@
 
                 <p>
                     
-                    <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br> <br> 
+                    <center>
+                    <img src="../_imagens/Lab.png" alt="logo da Home Host" style="right; width:300px">
+                    </center>
+                    <br><br> 
                     
                 </p>
             </article>
