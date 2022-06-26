@@ -12,6 +12,9 @@
         header('Location:_codigos/logout.php');
     }
 ?>
+<script>
+    window.scrollTo(0, 0);
+</script>
 
 <!DOCTYPE html>
 
@@ -100,10 +103,11 @@
 </head>
 <body>
 
+
     <article id="Andamento">
 
-        <header>
-            <h1>Andamento dos exames</h1>
+        <!--<header>-->
+            <!--<h1>Andamento dos exames</h1>-->
             <br>
             <h2>Modificar andamento dos exames atribuídos</h2>
             <br>
@@ -241,8 +245,11 @@
         ?>
 
         
-        </header>
+        <!--</header>-->
     </article>
 
+    <script>
+    window.scrollTo(0, 0);
+    </script>
  </body>
 </html>
