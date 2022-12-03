@@ -85,14 +85,23 @@
                     <label for="cSenha">Senha:</label> <input type="password" name="tSenha" id="cSenha" size="28" maxlength="8" />
                 </p>
 
+                
                 <div id="RecuperarAdmin">
-                    <p id="recuperar">
-                        <input type="checkbox" name="tRecuperar" id="Recuperar" /><label for="Recuperar">Esqueceu a Senha?</label>
+                    <p id="recuperar"> 
+                        <input type="checkbox" name="tRecuperar" id="Recuperar" /> <label for="recuperar">Esqueceu a Senha?</label>
                     </p>
                 </div>
 
-                <div><input type="hidden" name="LoginValida" value="f_login"/></div>
-                <div id="Botaologin"><input type="submit" name="tLogin" id="cLogin" value="Entrar"/></div>
+                <div>
+                    <p id="entrar">
+                        <input type="hidden" name="LoginValida" value="f_login"/>
+                    </p>
+
+                </div>
+                <div id="botoes" style="text-align:center" >
+                    <button type="submit" style="font-size : 16px" name="tLogin"  id="cLogin" > Entrar </button>
+                </div>
+
 
             </fieldset>
         </form>
